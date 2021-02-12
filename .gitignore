@@ -1,3 +1,4 @@
 logs
 fonts
 node_modules
+*win32-x64*
