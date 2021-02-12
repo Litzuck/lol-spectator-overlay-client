@@ -30,6 +30,11 @@ jobs:
         node-version: 12.x
     - run: npm ci
     - run: npm run-script package-win
+
+    - uses: actions/upload-artifact@master
+      with:
+        name: client_win32
+        path: ./lol-esports-spectate-client-win32-x64
     
 
   release:
@@ -39,6 +44,10 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/download-artifact@master
+      with:
+        name: client_win32
+        path: ./lol-esports-spectate-client-win32-x64
     - run: zip -r release.zip ./lol-esports-spectate-client-win32-x64
     - name: Create Release
       id: create_release
