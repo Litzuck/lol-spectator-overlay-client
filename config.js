@@ -6,7 +6,14 @@ const ipc = electron.ipcRenderer
 const request = require("request")
 const fs = require("fs")
 
+
+splashArtDir = "./images/splash-art/centered"
+
 document.getElementById("updateBtn").addEventListener("click", () => {
+
+    if (!fs.existsSync(splashArtDir)){
+      fs.mkdirSync(splashArtDir, {recursive:true});
+    }
     request("https://ddragon.leagueoflegends.com/api/versions.json", {
     json: true
   }, (err, res, body) => {
@@ -38,6 +45,15 @@ document.getElementById("updateBtn").addEventListener("click", () => {
 })
 
 
+const download = (url, path, callback) => {
+  request.head(url, (err, res, body) => {
+    request(url)
+      .pipe(fs.createWriteStream(path))
+      .on('close', callback)
+  })
+}
+
+
 document.getElementById("startBtn").addEventListener("click", () => {
     ipc.send("create-overlay-window", null)
     document.getElementById("stopOverlayBtn").disabled=false;
@@ -66,10 +82,10 @@ document.getElementById("loadReplayBtn").addEventListener("click", () => {
       })
 })
 
-window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
-    document.getElementById('my_console').innerText += errorMsg + '\r\n';
-    console.error(errorMsg, url, lineNumber);
-  }
+// window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+//     document.getElementById('my_console').innerText += errorMsg + '\r\n';
+//     console.error(errorMsg, url, lineNumber);
+//   }
 
 
 ipc.on('overlay-stopped', (event,args) => {
