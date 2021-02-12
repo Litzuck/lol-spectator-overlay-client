@@ -30,6 +30,15 @@ jobs:
         node-version: 12.x
     - run: npm ci
     - run: npm run-script package-win
+    
+
+  release:
+    
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - uses: actions/checkout@v2
     - run: zip -r release.zip ./lol-esports-spectate-client-win32-x64
     - name: Create Release
       id: create_release
