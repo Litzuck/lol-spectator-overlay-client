@@ -5,7 +5,11 @@ This is a tool that produces a custom League of Legends Champion Select Overlay 
 ## Usage
 
 Just download the latest release for your platform and you are nearly ready to go.
-After downloading you have to press the button `Update Champion Images` after that you just have to join a custom Lobby and press the button `Start Overlay`.
+
+After downloading you have to press the button `Update Champion Images`. 
+
+After that you just have to join a custom Lobby and press the button `Start Overlay`.
+
 If you want to fetch the summoner names of the players in the Lobby just press the button `Fetch Summoner Names`.
 
 ## Preview Image
