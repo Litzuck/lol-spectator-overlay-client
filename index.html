@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LoL Esports spectate</title>
+    <link rel="stylesheet" type="text/css" href="./index.css" />
+    <link rel="stylesheet" type="text/css" href="test.css" />
+    <script type="text/javascript" src="./test.js"></script>
+    <script type="text/javascript" src="./esportsSpectate.js"></script>
+  </head>
+
+  <body>
+    <div class="champ-select-spectate-component left-side-acting">
+      <div class="champion-select-header">
+        <div class="timer-left visible">
+          <div class="timer-bg"></div>
+          <div class="timer-inner" id="timerLeft">50</div>
+        </div>
+        <div class="header-keystone">
+          <div class="left-bg-section"></div>
+          <div class="right-bg-section"></div>
+          <div class="header-keystone-inner">
+            <div class="left-bg-section"></div>
+            <div class="right-bg-section"></div>
+            <div class="phase">Ban Phase 1</div>
+          </div>
+        </div>
+
+        <div class="timer-right visible">
+          <div class="timer-bg"></div>
+          <div class="timer-inner" id="timerRight">50</div>
+        </div>
+      </div>
+
+      <div class="your-party">
+        <div class="party">
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner0">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner1">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner2">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner3">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner4">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="enemy-party">
+        <div class="party">
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner5">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner6">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner7">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner8">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+          <div class="summoner-wrapper">
+            <div class="base-color-background"></div>
+            <div class="gradient-background-overlay"></div>
+            <div class="summoner-object-component no-champion" id="summoner9">
+              <div class="summoner-object-wrapper">
+                <div class="background"></div>
+                <div class="action-text">Picking</div>
+                <div class="summoner-name">testName</div>
+                <div class="spells">
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                  <img class="spell" src="images/summoner-spells/4.png" />
+                </div>
+                <div class="edge-border"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="champSelectFooter">
+        <div class="my-bans" id="myBans">
+          <div class="ban-wrapper" id="ban1">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban3">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban5">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban8">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban10">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+            <div class="ban-icon"></div>
+          </div>
+        </div>
+
+        <div class="their-bans" id="theirBans">
+          <div class="ban-wrapper" id="ban2">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban4">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban6">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban7">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+          <div class="ban-wrapper" id="ban9">
+            <div class="ban-background">
+              <div class="ban-container">
+                <div class="ban"></div>
+              </div>
+            </div>
+
+            <div class="ban-icon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

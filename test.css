@@ -1,0 +1,5 @@
+.menuBar {
+    -webkit-app-region: drag;
+    background: #003c8f;
+    border-radius: 10px 10px 0 0;
+}
