@@ -16,7 +16,7 @@
   "dependencies": {
     "@electron/remote": "^1.0.4",
     "lcu-connector": "^2.1.3",
-    "lol-esports-spectate": "^1.0.6",
+    "lol-esports-spectate": "^1.1.0",
     "request-promise": "^4.2.6",
     "ws": "^7.4.3"
   },

@@ -1,153 +1,208 @@
-const { Menu, MenuItem} = require("@electron/remote");
+const {
+  Menu,
+  MenuItem,
+  dialog
+} = require("@electron/remote");
+
+const electron = require("electron")
+const ipc = electron.ipcRenderer
+
+ipc.send("did")
+
+ipc.on("load-replay", function(event,path) {
+  console.log("playing replay...")
+  api = new ChampSelectAPI(replay = true, replay_file = path);
+  registerEvenListeners();
+  api.start();
+});
+
+ipc.on("start-spectator", function(event,args) {
+  api= new ChampSelectAPI();
+  api.start();
+})
+ipc.on("fetch-summoner-names-client", function(event,args) {
+  getNames();
+})
 // const {  } = remote;
 const ChampSelectAPI = require("lol-esports-spectate");
 // const ChampSelectAPI = require("../lib/ChampSelectApi")
-var api = new ChampSelectAPI();
-api.start();
+var api 
 var timerLeft = 0;
 var timerRight = 0;
 var namesEditable = false;
 
-var menu = new Menu();
+// var menu = new Menu();
 
-menu.append(new MenuItem({ role: "fileMenu" }));
-menu.append(new MenuItem({ role: "editMenu" }));
-menu.append(new MenuItem({ role: "viewMenu" }));
-menu.append(new MenuItem({ role: "windowMenu" }));
-menu.append(
-  new MenuItem({
-    label: "Fetch Summoner Names",
-    click() {
-      getNames();
-    }
-  })
-);
-menu.append(
-  new MenuItem({
-    label: "Toggle Editable Summonernames",
-    click() {
-      toggleEditableNames();
-    }
-  })
-);
-Menu.setApplicationMenu(menu);
+// menu.append(new MenuItem({
+//   role: "fileMenu"
+// }));
+// menu.append(new MenuItem({
+//   role: "editMenu"
+// }));
+// menu.append(new MenuItem({
+//   role: "viewMenu"
+// }));
+// menu.append(new MenuItem({
+//   role: "windowMenu"
+// }));
+// menu.append(
+//   new MenuItem({
+//     label: "Fetch Summoner Names",
+//     click() {
+//       getNames();
+//     }
+//   })
+// );
+// menu.append(
+//   new MenuItem({
+//     label: "Toggle Editable Summonernames",
+//     click() {
+//       toggleEditableNames();
+//     }
+//   })
+// );
+// menu.append(
+//   new MenuItem({
+//     label: "Load Replay",
+//     click() {
+//       dialog.showOpenDialog({
+//         properties: ['openFile']
+//       }).then(result => {
+//         if (result.filePaths.length == 1) {
+//           api = new ChampSelectAPI(replay = true, replay_file = result.filePaths[0])
+//           registerEvenListeners();
+//           api.start()
+//         } else {
+//           console.log("No file selected.")
+//         }
+//       })
+//     }
+//   })
+// )
+// Menu.setApplicationMenu(menu);
 
-api.on("championSelectStarted", data => {
-  console.log("spec started");
-  timerLeft = document.getElementById("timerLeft");
-  timerRight = document.getElementById("timerRight");
-  gameStarted = true;
-});
 
-api.on("championHoverChanged", (championId, actorCellId) => {
-  var summoner = document.getElementById("summoner" + actorCellId);
-  summoner.classList.remove("no-champion");
-  summoner.classList.add("is-picking-now");
-  summoner.classList.add("champion-not-locked");
-  var background = document.querySelector(
-    "#summoner" + actorCellId + " .background"
-  );
-  background.setAttribute("data-id", championId);
-  background.setAttribute(
-    "style",
-    "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
-  );
-});
+function registerEvenListeners() {
 
-api.on("championChanged", (championId, actorCellId) => {
-  var summoner = document.getElementById("summoner" + actorCellId);
-  var background = document.querySelector(
-    "#summoner" + actorCellId + " .background"
-  );
-  background.setAttribute("data-id", championId);
-  background.setAttribute(
-    "style",
-    "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
-  );
-});
+  api.on("championSelectStarted", data => {
+    console.log("spec started");
+    timerLeft = document.getElementById("timerLeft");
+    timerRight = document.getElementById("timerRight");
+    gameStarted = true;
+  });
 
-api.on("championLocked", (championId, actorCellId) => {
-  var summoner = document.getElementById("summoner" + actorCellId);
-  summoner.classList.remove("is-picking-now");
-  summoner.classList.remove("champion-not-locked");
-  summoner.classList.add("champion-locked");
-});
-
-api.on("championBanned", (championId, banTurn) => {
-  var ban_wrapper = document.getElementById("ban" + banTurn);
-  console.log("ban object:" + ban_wrapper);
-  ban_wrapper.classList.remove("active");
-  ban_wrapper.classList.add("completed");
-  var ban_icon = document.querySelector("#ban" + banTurn + " .ban");
-  if (championId != 0) {
-    ban_icon.setAttribute(
+  api.on("championHoverChanged", (championId, actorCellId) => {
+    var summoner = document.getElementById("summoner" + actorCellId);
+    summoner.classList.remove("no-champion");
+    summoner.classList.add("is-picking-now");
+    summoner.classList.add("champion-not-locked");
+    var background = document.querySelector(
+      "#summoner" + actorCellId + " .background"
+    );
+    background.setAttribute("data-id", championId);
+    background.setAttribute(
       "style",
       "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
     );
-    ban_icon.setAttribute("data-id", championId);
-  }
-});
+  });
 
-api.on("phaseChanged", newType => {
-  console.log("phase changed to:" + newType);
-  var main = document.getElementsByClassName(
-    "champ-select-spectate-component"
-  )[0];
-  curPhase++;
-  var phase = document.getElementsByClassName("phase")[0];
-  phase.innerHTML = phases[curPhase];
-  if (curPhase == 4) {
-    main.classList.remove("left-side-acting");
-    main.classList.remove("right-side-acting");
-    main.classList.add("show-both-timers");
-  }
-});
+  api.on("championChanged", (championId, actorCellId) => {
+    var summoner = document.getElementById("summoner" + actorCellId);
+    var background = document.querySelector(
+      "#summoner" + actorCellId + " .background"
+    );
+    background.setAttribute("data-id", championId);
+    background.setAttribute(
+      "style",
+      "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
+    );
+  });
 
-api.on("playerTurnBegin", actorCellId => {
-  var summoner = document.getElementById("summoner" + actorCellId);
-  summoner.classList.add("is-picking-now");
-});
+  api.on("championLocked", (championId, actorCellId) => {
+    var summoner = document.getElementById("summoner" + actorCellId);
+    summoner.classList.remove("is-picking-now");
+    summoner.classList.remove("champion-not-locked");
+    summoner.classList.add("champion-locked");
+  });
 
-api.on("banTurnBegin", banTurn => {
-  var ban_wrapper = document.getElementById("ban" + banTurn);
-  ban_wrapper.classList.add("active");
-});
+  api.on("championBanned", (championId, banTurn) => {
+    var ban_wrapper = document.getElementById("ban" + banTurn);
+    console.log("ban object:" + ban_wrapper);
+    ban_wrapper.classList.remove("active");
+    ban_wrapper.classList.add("completed");
+    var ban_icon = document.querySelector("#ban" + banTurn + " .ban");
+    if (championId != 0) {
+      ban_icon.setAttribute(
+        "style",
+        "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
+      );
+      ban_icon.setAttribute("data-id", championId);
+    }
+  });
 
-api.on("playerTurnEnd", actorCellId => {
-  //TODO add fancy animations
-});
+  api.on("phaseChanged", newType => {
+    console.log("phase changed to:" + newType);
+    var main = document.getElementsByClassName(
+      "champ-select-spectate-component"
+    )[0];
+    curPhase++;
+    var phase = document.getElementsByClassName("phase")[0];
+    phase.innerHTML = phases[curPhase];
+    if (curPhase == 4) {
+      main.classList.remove("left-side-acting");
+      main.classList.remove("right-side-acting");
+      main.classList.add("show-both-timers");
+    }
+  });
 
-api.on("banTurnEnd", banTurn => {
-  //TODO fancy animations
-});
+  api.on("playerTurnBegin", actorCellId => {
+    var summoner = document.getElementById("summoner" + actorCellId);
+    summoner.classList.add("is-picking-now");
+  });
 
-api.on("newTurnBegin", timeLeftInSec => {
-  console.log("reset timer");
-  t = timeLeftInSec.toFixed(0);
-});
+  api.on("banTurnBegin", banTurn => {
+    var ban_wrapper = document.getElementById("ban" + banTurn);
+    ban_wrapper.classList.add("active");
+  });
 
-api.on("teamTurnChanged", isAllyAction => {
-  var main = document.getElementsByClassName(
-    "champ-select-spectate-component"
-  )[0];
-  if (isAllyAction) {
-    main.classList.add("left-side-acting");
-    main.classList.remove("right-side-acting");
-  } else {
-    main.classList.remove("left-side-acting");
-    main.classList.add("right-side-acting");
-  }
-});
+  api.on("playerTurnEnd", actorCellId => {
+    //TODO add fancy animations
+  });
 
-api.on("summonerSpellChanged", (actorCellId, spellIndex, spellId) => {
-  var summonerSpell = document.querySelector(
-    "#summoner" + actorCellId + " .spell:nth-child(" + spellIndex + ")"
-  );
-  summonerSpell.setAttribute(
-    "src",
-    "images/summoner-spells/" + spellId + ".png"
-  );
-});
+  api.on("banTurnEnd", banTurn => {
+    //TODO fancy animations
+  });
+
+  api.on("newTurnBegin", timeLeftInSec => {
+    console.log("reset timer");
+    t = timeLeftInSec.toFixed(0);
+  });
+
+  api.on("teamTurnChanged", isAllyAction => {
+    var main = document.getElementsByClassName(
+      "champ-select-spectate-component"
+    )[0];
+    if (isAllyAction) {
+      main.classList.add("left-side-acting");
+      main.classList.remove("right-side-acting");
+    } else {
+      main.classList.remove("left-side-acting");
+      main.classList.add("right-side-acting");
+    }
+  });
+
+  api.on("summonerSpellChanged", (actorCellId, spellIndex, spellId) => {
+    var summonerSpell = document.querySelector(
+      "#summoner" + actorCellId + " .spell:nth-child(" + spellIndex + ")"
+    );
+    summonerSpell.setAttribute(
+      "src",
+      "images/summoner-spells/" + spellId + ".png"
+    );
+  });
+
+
+}
 
 var curPhase = 0;
 var phases = [
@@ -159,7 +214,7 @@ var phases = [
 ];
 var gameStarted = false;
 var t = 30;
-var x = setInterval(function() {
+var x = setInterval(function () {
   if (t > 0 && gameStarted) {
     if (t < 10) {
       timerLeft.innerHTML = ":0" + t;
@@ -173,10 +228,10 @@ var x = setInterval(function() {
 }, 1000);
 
 function getNames() {
-  api.request("lol-lobby/v2/lobby", a);
+  api.request("lol-lobby/v2/lobby", getNamesCallback);
 }
 
-function a(response) {
+function getNamesCallback(response) {
   var b = JSON.parse(response);
   console.log(b);
   var blueTeam = b.gameConfig.customTeam100;
@@ -201,3 +256,58 @@ function toggleEditableNames() {
     name.setAttribute("contenteditable", namesEditable);
   }
 }
+
+// registerEvenListeners();
+
+
+
+const request = require('request');
+const fs = require('fs')
+
+
+// https://ddragon.leagueoflegends.com/api/versions.json
+
+
+function checkForNewChampions() {
+  request("https://ddragon.leagueoflegends.com/api/versions.json", {
+    json: true
+  }, (err, res, body) => {
+    console.log(body);
+    var latestVersion = body[0];
+    request(`http://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/champion.json`, {
+      json: true
+    }, (err, res, body) => {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(res)
+      console.log(body)
+      Object.values(body.data).forEach((k) => {
+        // console.log(k.key);
+        fs.access(`./images/splash-art/centered/${k.key}.jpg`, fs.F_OK, (err) => {
+          if (err) {
+            console.log(`Splash art for champion with key ${k.key} missing. \n Downloading now...`);
+            download(`https://cdn.communitydragon.org/latest/champion/${k.key}/splash-art/centered`,
+              `./images/splash-art/centered/${k.key}.jpg`, () => {
+                console.log("Downloaded splash for champion with key:" + k.key);
+              });
+            return;
+          }
+        });
+      });
+    });
+  })
+}
+
+const download = (url, path, callback) => {
+  request.head(url, (err, res, body) => {
+    request(url)
+      .pipe(fs.createWriteStream(path))
+      .on('close', callback)
+  })
+}
+
+
+
+// http://ddragon.leagueoflegends.com/cdn/11.3.1/data/en_US/champion.json
+// # https://cdn.communitydragon.org/latest/champion/:championKey/splash-art/centered
