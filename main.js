@@ -10,8 +10,10 @@ const windows = new Set();
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 1616,
-        height: 959,
+        // width: 1616,
+        // height: 959,
+        width: 1600,
+        height: 900,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true
@@ -41,8 +43,10 @@ function createWindow() {
 function createReplayWindow(path) {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 1616,
-        height: 959,
+        // width: 1616,
+        // height: 959,
+        width: 1600,
+        height: 900,
         webPreferences: {
             nodeIntegration: true,
             enableRemoteModule: true
