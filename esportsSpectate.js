@@ -5,6 +5,8 @@ const {
   app
 } = require("@electron/remote");
 
+
+const path = require('path');
 const electron = require("electron")
 const ipc = electron.ipcRenderer
 
@@ -35,7 +37,7 @@ var namesEditable = false;
 
 var appPath = app.getAppPath();
 
-const splashArtDir = appPath+"/images/splash-art/centered"
+const splashArtDir = path.join(appPath,"/images/splash-art/centered")
 
 // var menu = new Menu();
 
@@ -106,9 +108,13 @@ function registerEvenListeners() {
       "#summoner" + actorCellId + " .background"
     );
     background.setAttribute("data-id", championId);
+    let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+      console.log(imagePath);
+      imagePath = imagePath.replace(/\\/g, "/");
+      console.log(imagePath);
     background.setAttribute(
       "style",
-      "background-image:url("+splashArtDir + championId + ".jpg)"
+      "background-image:url("+imagePath +")"
     );
   });
 
@@ -118,9 +124,13 @@ function registerEvenListeners() {
       "#summoner" + actorCellId + " .background"
     );
     background.setAttribute("data-id", championId);
+    let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+      console.log(imagePath);
+      imagePath = imagePath.replace(/\\/g, "/");
+      console.log(imagePath);
     background.setAttribute(
       "style",
-      "background-image:url("+splashArtDir + championId + ".jpg)"
+      "background-image:url("+imagePath +")"
     );
   });
 
@@ -138,9 +148,14 @@ function registerEvenListeners() {
     ban_wrapper.classList.add("completed");
     var ban_icon = document.querySelector("#ban" + banTurn + " .ban");
     if (championId != 0) {
+
+      let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+      console.log(imagePath);
+      imagePath = imagePath.replace(/\\/g, "/");
+      console.log(imagePath);
       ban_icon.setAttribute(
         "style",
-        "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
+        "background-image:url("+imagePath +")"
       );
       ban_icon.setAttribute("data-id", championId);
     }

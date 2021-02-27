@@ -29,7 +29,7 @@ document.getElementById("updateBtn").addEventListener("click", () => {
       json: true
     }, (err, res, body) => {
       if (err) {
-        return console.log(err);
+        return console.error(err);
       }
       console.log(res)
       console.log(body)
