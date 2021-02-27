@@ -1,5 +1,5 @@
 const {
-    dialog
+    dialog, app
   } = require("@electron/remote");
 const electron = require("electron")
 const ipc = electron.ipcRenderer
@@ -7,7 +7,13 @@ const request = require("request")
 const fs = require("fs")
 
 
-splashArtDir = "./images/splash-art/centered"
+var appPath = app.getAppPath();
+
+var splashArtDir = appPath+"/images/splash-art/centered"
+
+// console.log(appPath)
+
+// console.log(process.resourcesPath)
 
 document.getElementById("updateBtn").addEventListener("click", () => {
 
@@ -29,11 +35,11 @@ document.getElementById("updateBtn").addEventListener("click", () => {
       console.log(body)
       Object.values(body.data).forEach((k) => {
         // console.log(k.key);
-        fs.access(`./images/splash-art/centered/${k.key}.jpg`, fs.F_OK, (err) => {
+        fs.access(`${appPath}/images/splash-art/centered/${k.key}.jpg`, fs.F_OK, (err) => {
           if (err) {
             console.log(`Splash art for champion with key ${k.key} missing. \n Downloading now...`);
             download(`https://cdn.communitydragon.org/latest/champion/${k.key}/splash-art/centered`,
-              `./images/splash-art/centered/${k.key}.jpg`, () => {
+              `${appPath}/images/splash-art/centered/${k.key}.jpg`, () => {
                 console.log("Downloaded splash for champion with key:" + k.key);
               });
             return;

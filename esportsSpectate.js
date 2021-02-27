@@ -1,7 +1,8 @@
 const {
   Menu,
   MenuItem,
-  dialog
+  dialog,
+  app
 } = require("@electron/remote");
 
 const electron = require("electron")
@@ -30,6 +31,10 @@ var api
 var timerLeft = 0;
 var timerRight = 0;
 var namesEditable = false;
+
+var appPath = app.getAppPath();
+
+const splashArtDir = appPath+"/images/splash-art/centered"
 
 // var menu = new Menu();
 
@@ -102,7 +107,7 @@ function registerEvenListeners() {
     background.setAttribute("data-id", championId);
     background.setAttribute(
       "style",
-      "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
+      "background-image:url("+splashArtDir + championId + ".jpg)"
     );
   });
 
@@ -114,7 +119,7 @@ function registerEvenListeners() {
     background.setAttribute("data-id", championId);
     background.setAttribute(
       "style",
-      "background-image:url(images/splash-art/centered/" + championId + ".jpg)"
+      "background-image:url("+splashArtDir + championId + ".jpg)"
     );
   });
 
