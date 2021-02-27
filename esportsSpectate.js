@@ -19,6 +19,7 @@ ipc.on("load-replay", function(event,path) {
 
 ipc.on("start-spectator", function(event,args) {
   api= new ChampSelectAPI();
+  registerEvenListeners();
   api.start();
 })
 ipc.on("fetch-summoner-names-client", function(event,args) {
