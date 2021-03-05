@@ -11,9 +11,12 @@ var appPath = app.getAppPath();
 
 var splashArtDir = appPath+"/images/splash-art/centered"
 
+var logDir = "./logs"
+
 // console.log(appPath)
 
 // console.log(process.resourcesPath)
+
 
 document.getElementById("updateBtn").addEventListener("click", () => {
 
@@ -97,3 +100,9 @@ document.getElementById("loadReplayBtn").addEventListener("click", () => {
 ipc.on('overlay-stopped', (event,args) => {
     document.getElementById("stopOverlayBtn").disabled=true;
 })
+
+
+if (!fs.existsSync(logDir)){
+  fs.mkdirSync(logDir, {recursive:true});
+}
+
