@@ -6,21 +6,21 @@ const {
 } = require("@electron/remote");
 
 
+const ChampSelectAPI = require("lol-esports-spectate");
 const path = require('path');
 const electron = require("electron")
 const ipc = electron.ipcRenderer
 
-ipc.send("did")
 
-ipc.on("load-replay", function(event,path) {
+ipc.on("load-replay", function(event,replay_path) {
   console.log("playing replay...")
-  api = new ChampSelectAPI(replay = true, replay_file = path);
+  api = new ChampSelectAPI(replay = true, replay_file = replay_path);
   registerEvenListeners();
   api.start();
 });
 
 ipc.on("start-spectator", function(event,args) {
-  api= new ChampSelectAPI();
+  api= new ChampSelectAPI(replay=false,log_path="./logs/");
   registerEvenListeners();
   api.start();
 })
@@ -28,7 +28,7 @@ ipc.on("fetch-summoner-names-client", function(event,args) {
   getNames();
 })
 // const {  } = remote;
-const ChampSelectAPI = require("lol-esports-spectate");
+
 // const ChampSelectAPI = require("../lib/ChampSelectApi")
 var api 
 var timerLeft = 0;
@@ -221,7 +221,18 @@ function registerEvenListeners() {
       "images/summoner-spells/" + spellId + ".png"
     );
   });
+  api.on("champSelectFinished", ()=>{
+    console.log("finished")
+    timerLeft.setAttribute("style", "opacity:0");
+    timerRight.setAttribute("style", "opacity:0");
+    timerLeft.style.opacity=0;
+    timerRight.style.opacity=0;
 
+    // [].forEach.call(document.getElementsByClassName("spell"))
+    Array.from(document.getElementsByClassName("spell")).forEach( spell => {
+      spell.style.opacity=1;
+    })
+  });
 
 }
 
@@ -236,7 +247,7 @@ var phases = [
 var gameStarted = false;
 var t = 30;
 var x = setInterval(function () {
-  if (t > 0 && gameStarted) {
+  if (t >= 0 && gameStarted) {
     if (t < 10) {
       timerLeft.innerHTML = ":0" + t;
       timerRight.innerHTML = ":0" + t;
