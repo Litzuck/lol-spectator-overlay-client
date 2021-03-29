@@ -37,7 +37,8 @@ var namesEditable = false;
 
 var appPath = app.getAppPath();
 
-const splashArtDir = path.join(appPath,"/images/splash-art/centered")
+// const splashArtDir = path.join(appPath,"/images/splash-art/centered")
+const splashArtDir = "images/splash-art/centered"
 
 // var menu = new Menu();
 
@@ -108,10 +109,11 @@ function registerEvenListeners() {
       "#summoner" + actorCellId + " .background"
     );
     background.setAttribute("data-id", championId);
-    let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
-      console.log(imagePath);
-      imagePath = imagePath.replace(/\\/g, "/");
-      console.log(imagePath);
+    // let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+    //   console.log(imagePath);
+    //   imagePath = imagePath.replace(/\\/g, "/");
+    //   console.log(imagePath);
+    let imagePath = splashArtDir +"/"+ championId +".jpg"
     background.setAttribute(
       "style",
       "background-image:url("+imagePath +")"
@@ -124,10 +126,12 @@ function registerEvenListeners() {
       "#summoner" + actorCellId + " .background"
     );
     background.setAttribute("data-id", championId);
-    let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
-      console.log(imagePath);
-      imagePath = imagePath.replace(/\\/g, "/");
-      console.log(imagePath);
+    // let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+    //   console.log(imagePath);
+    //   imagePath = imagePath.replace(/\\/g, "/");
+    //   console.log(imagePath);
+
+    let imagePath = splashArtDir +"/"+ championId +".jpg"
     background.setAttribute(
       "style",
       "background-image:url("+imagePath +")"
@@ -149,10 +153,12 @@ function registerEvenListeners() {
     var ban_icon = document.querySelector("#ban" + banTurn + " .ban");
     if (championId != 0) {
 
-      let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
-      console.log(imagePath);
-      imagePath = imagePath.replace(/\\/g, "/");
-      console.log(imagePath);
+      // let imagePath = path.normalize(path.join(splashArtDir, (championId + ".jpg")))
+      // console.log(imagePath);
+      // imagePath = imagePath.replace(/\\/g, "/");
+      // console.log(imagePath);
+
+      let imagePath = splashArtDir +"/"+ championId +".jpg"
       ban_icon.setAttribute(
         "style",
         "background-image:url("+imagePath +")"
