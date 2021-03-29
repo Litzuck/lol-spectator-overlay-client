@@ -21,6 +21,7 @@ function createWindow() {
         frame: false,
     })
     // and load the index.html of the app.
+    win.setContentSize(1600,900)
     win.loadFile('index.html')
 
     win.webContents.on('did-finish-load', () => {
@@ -53,6 +54,7 @@ function createReplayWindow(path) {
         },
         frame: false,
     })
+    win.setContentSize(1600,900)
     // and load the index.html of the app.
     win.loadFile('index.html')
 
