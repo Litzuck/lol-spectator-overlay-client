@@ -1,0 +1,82 @@
+.timer{
+    width: 148px;
+    height: 108px;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    padding-top: 33px;
+    font-size: 39px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    opacity: 0;
+}
+
+.timer.visible{
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+
+.timer .timer-bg{
+    position: absolute;
+    top: 0;
+    width: 98px;
+    height: 108px;
+    transition: opacity 0.3s;
+}
+
+.timer .timer-inner{
+    position: absolute;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4), -1px 1px 3px rgba(0, 0, 0, 0.4),
+      -1px -1px 3px rgba(0, 0, 0, 0.4), 1px -1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.timer-blue{
+    left: 396px;
+}
+
+.timer-blue .timer-bg {
+    transform: skew(14deg);
+    background: var(--left-side-color);
+    right: 0;
+  }
+
+  .timer-blue
+  .timer-inner {
+  left: 69px;
+}
+
+.timer-red {
+    right: 396px;
+    text-align: right;
+  }
+
+  .timer-red
+  .timer-bg {
+  transform: skew(-14deg);
+  background: var(--right-side-color);
+  left: 0;
+}
+
+
+.timer-red
+.timer-inner {
+left: 20px;
+}
+
+
+.container{
+    left: 0;
+    top:0;
+    position: absolute;
+    width: 125px;
+    height: 108px;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid green;
+    
+    width: 125px;
+    height: 108px;
+}

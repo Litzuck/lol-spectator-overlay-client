@@ -1,0 +1,515 @@
+
+
+.summoner-object-component
+.summoner-object-wrapper {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+letter-spacing: 0.8px;
+font-size: 16px;
+font-weight: 300;
+text-shadow: 1px 1px 2px #000, 0px 1px 2px #000, 0px 0px 3px #000,
+  0px 0px 3px #000, 1px 1px 4px #000;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.background,
+
+.summoner-object-component
+.summoner-object-wrapper
+.old-background {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background-size: 241%;
+background-position: 52% 28%;
+opacity: 1;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.background-wrapper {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+direction: ltr;
+opacity: 0;
+position: absolute;
+bottom: 20px;
+transition: opacity 0.2s;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+opacity: 0;
+position: absolute;
+top: 0;
+width: 0;
+height: 100%;
+border-left: 0px solid #000;
+border-right: 0px solid #000;
+transition: width 0.15s;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spells {
+opacity: 1;
+transition: opacity 0.3s;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+width: 30px;
+border: 2px solid #000;
+position: absolute;
+box-shadow: 0 0 1px #000;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell:first-child {
+top: 7px;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell:nth-child(2) {
+top: 39px;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+position: absolute;
+bottom: 2px;
+transition: left 0.2s, right 0.2s;
+}
+
+
+.summoner-object-component.no-champion
+.spells {
+opacity: 0;
+}
+
+
+.summoner-object-component.is-picking-now
+.action-text {
+opacity: 1;
+}
+
+
+.summoner-object-component.champion-not-locked
+.background,
+
+.summoner-object-component.champion-not-locked
+.old-background {
+-webkit-filter: brightness(0.8);
+}
+
+
+.summoner-object-component.champion-locked
+.background {
+animation: champLockedInAnimation 1.5s ease-out;
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+left: 11px;
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+right: 9px;
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+right: 0px;
+background: var(--left-side-color);
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+right: 15px;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.edge-border {
+width: 4px;
+border-left: 3px solid #000;
+opacity: 1;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.summoner-name {
+right: 15px;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.action-text {
+animation: fadeInRightAnimation 0.2s,
+  flickerAnimation 3s 0.2s cubic-bezier(0.21, 0.89, 0.2, 0.88) infinite;
+}
+
+
+#blueParty
+.summoner-object-component
+.background-wrapper {
+transform: scaleX(-1);
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+right: 11px;
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+left: 10px;
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+left: 0px;
+background: var(--right-side-color);
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+left: 15px;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.edge-border {
+width: 4px;
+border-right: 3px solid #000;
+opacity: 1;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.summoner-name {
+left: 15px;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.action-text {
+animation: fadeInLeftAnimation 0.2s,
+  flickerAnimation 3s 0.2s cubic-bezier(0.21, 0.89, 0.2, 0.88) infinite;
+}
+
+
+.party .summoner-wrapper {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+ .party .summoner-wrapper:nth-child(3) {
+  margin-bottom: 23px;
+}
+
+
+  .party
+  .summoner-wrapper
+  .base-color-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-filter: saturate(0.6);
+}
+
+
+  .party
+  .summoner-wrapper
+  .gradient-background-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.83) 0%,
+    rgba(0, 0, 0, 0.72) 50%,
+    rgba(0, 0, 0, 0.83) 100%
+  );
+}
+
+
+  .party
+  .summoner-wrapper:first-child
+  .gradient-background-overlay {
+  background-image: radial-gradient(
+    ellipse 82% 128% at 50% 90%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.91) 100%
+  );
+}
+
+
+  .party
+  .summoner-wrapper:last-child
+  .gradient-background-overlay {
+  background-image: radial-gradient(
+    ellipse 82% 128% at 50% 10%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.91) 100%
+  );
+}
+
+
+  #blueParty
+  .summoner-wrapper
+  .base-color-background {
+  background: var(--left-side-color);
+}
+
+
+  #redParty
+  .summoner-wrapper
+  .base-color-background {
+  background: var(--right-side-color);
+  }
+
+@-moz-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-webkit-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-o-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-moz-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-webkit-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-o-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-moz-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-webkit-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-o-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-moz-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@-webkit-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@-o-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
