@@ -25,7 +25,7 @@ function App() {
   
     PB.start();
 	return function (){
-		PB.removeAllListeners()
+		PB.removeAllListeners("newEvent")
 	}
   }, []);
 
