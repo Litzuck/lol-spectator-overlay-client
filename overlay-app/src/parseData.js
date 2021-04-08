@@ -1,7 +1,10 @@
 
-
+var lastState;
 
 function parseData (data){
+
+	if(data.eventType==="Delete")
+		return lastState;
     data = data.data
     console.log(data)
     var state = {
@@ -95,7 +98,7 @@ function parseData (data){
 
     state.timestamp = data.timer.internalNowInEpochMs
 
-
+	lastState =state
     return state
 
 }
