@@ -1,7 +1,7 @@
 const { EventEmitter } = require('events')
 
 
-class ChampionSelectReplay extends EventEmitter{
+export class ChampionSelectReplay extends EventEmitter{
 
 
     constructor(replay_file){
@@ -31,5 +31,3 @@ class ChampionSelectReplay extends EventEmitter{
         this.callbacks.set(event, callback)
     }
 }
-
-module.exports = ChampionSelectReplay;

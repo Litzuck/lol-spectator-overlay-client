@@ -1,5 +1,4 @@
 
-
 var webSock = new WebSocket("ws://localhost:8080")
 
 var textArea = document.getElementById("a")
@@ -13,3 +12,5 @@ webSock.onmessage = function (message) {
     textArea.innerText+= "Message:" + message.data +" \n"
     console.log("received: %s", message.data)
 }
+
+

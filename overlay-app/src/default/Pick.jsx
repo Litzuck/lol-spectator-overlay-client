@@ -26,8 +26,8 @@ export default class Pick extends React.Component {
 		let pick = <div className={cx("summoner-object-component"
 			, {
 				"no-champion": this.props.championId === 0,
-				"is-picking-now": this.props.picking,
-				"champion-not-locked": this.props.picking,
+				"is-picking-now": this.props.isPicking,
+				"champion-not-locked": this.props.isPicking,
 				"champion-locked": this.props.isCompleted
 			})}>
 			<div className="summoner-object-wrapper">

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Balthazar&display=swap');
+
+body{
+    margin:0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.main{
+    position: relative;
+    width: 1920px;
+    height: 450px;
+    /* background-color: rgb(161, 161, 161); */
+    display: flex;
+}
+
+.champion {
+    /* background-image: url("../../assets/1.jpg"); */
+	background-color: black;
+    background-size: auto 150%;
+    background-position: 52% 28%;
+    width: 160px;
+    height: 240px;
+    object-fit: fill;
+    /* padding: 10; */
+    margin: 0 1px 0 0;
+    position: relative;
+}
+
+.banAlternate {
+
+    height: 75px;
+    width: 75px;
+    background-image: url(./../../assets/square.png);
+    background-size: 100%;
+    background-position: 0% 0%;
+    box-shadow: inset 0 0 2 rgba(0,0,0,0.5);
+    border: 1 #000;
+	position: relative;
+}
+
+
+.name{
+    position: absolute;
+    bottom: 0;
+    background-color: #010010;
+    width: 160px;
+    height: 48px;
+    color: white;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-family:  'Roboto Light', 'Roboto Medium', 'Roboto'; */
+	font-family: 'Copperplate Gothic Light';
+	/* font-weight: bold; */
+	/* font-family: 'Balthazar', serif; */
+	font-size: 1vw;
+}
+
+
+.name p{
+	white-space: nowrap;
+	padding: 5px;
+}
+.container{
+    position: absolute;
+    /* top:0; */
+    /* left: 0; */
+    display: flex;
+}
+
+.containerBlue{
+    /* left: 78; */
+    /* width: 805; */
+    /* position: absolute; */
+    position: relative;
+    /* margin-left: 78; */
+}
+
+.containerRed{
+    /* top:0; */
+    position: relative;
+}
+
+.banBlue{
+    bottom: 140px;
+    right: 0px;
+}
+
+.banRed{
+    left: 0;
+    bottom: 140px;
+}
+
+
+.pickContainer{
+    display: flex;
+}
+
+/* .containerBlue .pickContainer .champion:nth-child(3){
+    margin-right: 20;
+}
+.containerRed .pickContainer .champion:nth-child(3){
+    margin-right: 20;
+} */
+
+.champion:last-child{
+    margin-right: 0px;
+}
+
+
+.banContainer{
+    display: flex;
+    align-content: flex-end;
+    position: absolute;
+    top:240px;
+}
+
+.midSpace{
+    width: 200px;
+    height: 315px;
+    background-color: turquoise;
+    background-color: #010010;;
+}
+.logo{
+    width: 100%;
+}
+.banBlue .banAlternate:nth-child(3) {
+    margin-right: 50px;
+}
+
+.banRed .banAlternate:nth-child(3){
+    margin-right: 50px;
+}
+
+/* .banBlue .ban:nth-child(3) {
+    margin-right: 190;
+}
+
+.banRed .ban:nth-child(3){
+    margin-right: 275;
+} */
+
+.pos{
+    /* color: rgba(255, 2555, 255, 0.8); */
+    /* opacity: 0.75; */
+    position: absolute;
+    right: 15px;
+    font-size: 36px;
+    /* font-weight: bold; */
+    font-family: 'myFirstFont','Gorga Grotesque', 'Road Rage', sans-serif;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    color: rgba(0, 0, 0, 0);
+	font-family: Impact
+}
+
+/* @font-face {
+    font-family: myFirstFont;
+    src: url(./Robinson-Typeface/Robinson\ Press.otf);
+  } */

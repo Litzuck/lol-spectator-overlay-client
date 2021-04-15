@@ -11,95 +11,95 @@ import Timer from "./Timer";
 export default class Overlay extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			started: false,
-			bluePicks: [
-				{
-					championId: 266,
-					picking: false,
-					summonerName: "test123",
-					isCompleted: true,
-					spellId1: 4,
-					spellId2: 6,
-				},
-				{
-					championId: 266,
-					picking: true,
-					summonerName: "test456",
-					isCompleted: false,
-				},
-				{},
-				{},
-				{},
-			],
-			redPicks: [
-				{
-					championId: 0,
-					picking: true,
-				},
-				{},
-				{},
-				{},
-				{},
-			],
+		// this.state = {
+		// 	started: false,
+		// 	bluePicks: [
+		// 		{
+		// 			championId: 266,
+		// 			picking: false,
+		// 			summonerName: "test123",
+		// 			isCompleted: true,
+		// 			spellId1: 4,
+		// 			spellId2: 6,
+		// 		},
+		// 		{
+		// 			championId: 266,
+		// 			picking: true,
+		// 			summonerName: "test456",
+		// 			isCompleted: false,
+		// 		},
+		// 		{},
+		// 		{},
+		// 		{},
+		// 	],
+		// 	redPicks: [
+		// 		{
+		// 			championId: 0,
+		// 			picking: true,
+		// 		},
+		// 		{},
+		// 		{},
+		// 		{},
+		// 		{},
+		// 	],
 
-			blueBans: [
-				{
-					championId: 1,
-					isActive: false,
-					isCompleted: true,
-				},
-				{
-					championId: 22,
-					isActive: false,
-					isCompleted: true,
-				},
-				{
-					championId: 0,
-					isActive: true,
-					isCompleted: false,
-				},
-				{
-					championId: 0,
-					isActive: false,
-					isCompleted: false,
-				},
-				{
-					championId: 0,
-					isActive: false,
-					isCompleted: false,
-				},
-			],
-			redBans: [
-				{
-					championId: 1,
-					isActive: false,
-					isCompleted: true,
-				},
-				{
-					championId: 22,
-					isActive: false,
-					isCompleted: true,
-				},
-				{
-					championId: 0,
-					isActive: true,
-					isCompleted: false,
-				},
-				{
-					championId: 0,
-					isActive: false,
-					isCompleted: false,
-				},
-				{
-					championId: 0,
-					isActive: false,
-					isCompleted: false,
-				},
-			],
-			phase: "Pick Phase 1",
-			actingSide: "blue",
-		};
+		// 	blueBans: [
+		// 		{
+		// 			championId: 1,
+		// 			isActive: false,
+		// 			isCompleted: true,
+		// 		},
+		// 		{
+		// 			championId: 22,
+		// 			isActive: false,
+		// 			isCompleted: true,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: true,
+		// 			isCompleted: false,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: false,
+		// 			isCompleted: false,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: false,
+		// 			isCompleted: false,
+		// 		},
+		// 	],
+		// 	redBans: [
+		// 		{
+		// 			championId: 1,
+		// 			isActive: false,
+		// 			isCompleted: true,
+		// 		},
+		// 		{
+		// 			championId: 22,
+		// 			isActive: false,
+		// 			isCompleted: true,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: true,
+		// 			isCompleted: false,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: false,
+		// 			isCompleted: false,
+		// 		},
+		// 		{
+		// 			championId: 0,
+		// 			isActive: false,
+		// 			isCompleted: false,
+		// 		},
+		// 	],
+		// 	phase: "Pick Phase 1",
+		// 	actingSide: "blue",
+		// };
 	}
 	render() {
 		// console.log(this.state)
@@ -136,7 +136,7 @@ export default class Overlay extends React.Component {
 		return (
 			<div
 				className="overlay"
-				style={{ width: 1280, height: 720 }}
+				style={{ width: 1280, height: 720 ,zoom:1.25}}
 				className={cx("overlay", this.props.state.actingSide + "-acting")}
 			>
 				<div className="champion-select-header">
