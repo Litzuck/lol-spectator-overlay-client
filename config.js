@@ -41,7 +41,7 @@ document.getElementById("updateBtn").addEventListener("click", () => {
         fs.access(`${appPath}/images/splash-art/centered/${k.key}.jpg`, fs.F_OK, (err) => {
           if (err) {
             console.log(`Splash art for champion with key ${k.key} missing. \n Downloading now...`);
-            download(`https://cdn.communitydragon.org/latest/champion/${k.key}/splash-art/centered`,
+            download(`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${k.id}_0.jpg`,
               `${appPath}/images/splash-art/centered/${k.key}.jpg`, () => {
                 console.log("Downloaded splash for champion with key:" + k.key);
               });
@@ -55,11 +55,15 @@ document.getElementById("updateBtn").addEventListener("click", () => {
 
 
 const download = (url, path, callback) => {
-  request.head(url, (err, res, body) => {
-    request(url)
-      .pipe(fs.createWriteStream(path))
+  const req =request.get(url)
+      .on('response', function (res) {
+        console.log(res.statusCode)
+        if (res.statusCode === 200) {
+          req.pipe(fs.createWriteStream(path))
+        }
+      })
+      // .pipe(fs.createWriteStream(path))
       .on('close', callback)
-  })
 }
 
 
