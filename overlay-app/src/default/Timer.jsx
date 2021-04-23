@@ -35,13 +35,30 @@ export default class Timer extends React.Component {
     // this.state.time = this.props.time
   }
 
+
+  timeToString(time){
+		let string= ""
+		let mins = Math.floor(time/60)
+		let secs = time%60
+		if(mins>0)
+			string+= mins
+		string+=":"
+		if(secs<10)
+			string+="0"
+		string+=secs
+
+		return string
+  }
+
+
+  //{this.state.time > 9 ? ":" + this.state.time : ":0" + this.state.time}
   render() {
     // this.state.time = this.props.time
     // console.log(this.props)
     return (
       <div className={cx("timer", "timer-" + this.props.side, { "visible": this.props.visible, "show-both-timers": this.props.actingSide === "none" })}>
         <div className="timer-bg"></div>
-        <div className="timer-inner" id={"timer-" + this.props.side}>{this.state.time > 9 ? ":" + this.state.time : ":0" + this.state.time}</div>
+        <div className="timer-inner" id={"timer-" + this.props.side}>{this.timeToString(this.state.time)}</div>
 
       </div>
     )
