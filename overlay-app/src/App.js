@@ -9,10 +9,10 @@ import parseData from "./parseData"
 function App() {
 
   const [globalState, setGlobalState] = useState({started: false,
-    bluePicks:[],
-    redPicks:[],
-    blueBans:[],
-    redBans:[],})
+    bluePicks:[{},{},{},{},{}],
+    redPicks:[{},{},{},{},{}],
+    blueBans:[{},{},{},{},{}],
+    redBans:[{},{},{},{},{}],})
 
 	const [champSelectEnded, setChampSelectEnded] = useState(false);
 //   let PB = new ChampionSelectReplay(replay);
@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
 
 	let ws = new WebSocket("ws://localhost:8080")
+	var endTimeout= null;
 	ws.onopen = function(ev){
 		console.log(ev)
 		ws.send("hello")
@@ -34,17 +35,19 @@ function App() {
 		console.log(msgJson)
 		if(msgJson.event==="championSelectStarted"){
 			setChampSelectEnded(false);
-			
+			if(endTimeout!=null)
+				clearTimeout(endTimeout);
+			endTimeout=null;
 		}
 		if(msgJson.event==="newState"){
 			setGlobalState(msgJson.data)
 		}
 		if(msgJson.event==="championSelectEnded"){
 			console.log("champSelectEnded")
-			setTimeout(()=>{
+			endTimeout = setTimeout(()=>{
 				setChampSelectEnded(true)
 				setGlobalState(pickOrderState)
-			}, 5000)
+			}, 5*60*1000)
 
 		}
 
@@ -54,6 +57,20 @@ function App() {
 			console.log(pickOrderState)
 		}
 	}
+	// var c =0;
+
+	// setInterval(()=>{
+
+	// 	var s = {
+	// 		started: true,
+	// 		bluePicks:[{championId: c+1},{championId: c+2},{championId: c+3},{championId: c+4},{championId: c+5}],
+    // 	redPicks:[{championId: c+6},{championId: c+7},{championId: c+8},{championId: c+9},{championId: c+10}],
+	// 	blueBans:[],
+	// 	redBans:[],
+	// 	}
+	// 	c+=10;
+	// 	setGlobalState(s)
+	// },3000)
     // PB.on('newEvent', state => {
     //   // console.log(state)
     //   setGlobalState(parseData(state))
