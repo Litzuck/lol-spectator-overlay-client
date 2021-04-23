@@ -5,6 +5,7 @@ import {ChampionSelectReplay} from "./test"
 import React, { useState, useEffect } from 'react';
 import replay from "./assets/replay_full.json"
 import parseData from "./parseData"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
 
@@ -35,19 +36,19 @@ function App() {
 		console.log(msgJson)
 		if(msgJson.event==="championSelectStarted"){
 			setChampSelectEnded(false);
-			if(endTimeout!=null)
-				clearTimeout(endTimeout);
-			endTimeout=null;
+			// if(endTimeout!=null)
+			// 	clearTimeout(endTimeout);
+			// endTimeout=null;
 		}
 		if(msgJson.event==="newState"){
 			setGlobalState(msgJson.data)
 		}
 		if(msgJson.event==="championSelectEnded"){
 			console.log("champSelectEnded")
-			endTimeout = setTimeout(()=>{
+			// endTimeout = setTimeout(()=>{
 				setChampSelectEnded(true)
 				setGlobalState(pickOrderState)
-			}, 5*60*1000)
+			// }, 5*60*1000)
 
 		}
 
@@ -89,20 +90,32 @@ function App() {
   // console.log(globalState)
 
 console.log(champSelectEnded)
-  if(!champSelectEnded){
+//   if(!champSelectEnded){
+//   return (
+//     <div className="App">
+//         <Overlay state={globalState}></Overlay>
+//     </div>
+//   );
+//   }
+//   else{
+// 	  return (
+// 		  <div className="App">
+// 			  <OverlayAlternative state={globalState}></OverlayAlternative>
+// 		  </div>
+// 	  )
+//   }
+
   return (
-    <div className="App">
-        <Overlay state={globalState}></Overlay>
-    </div>
-  );
-  }
-  else{
-	  return (
-		  <div className="App">
-			  <OverlayAlternative state={globalState}></OverlayAlternative>
-		  </div>
-	  )
-  }
+	  <div className="App">
+	<Router>
+	<Switch>
+	  <Route path="/" exact component={() =>     
+        <Overlay state={globalState}></Overlay>} />
+	  <Route path="/alt" exact component={() => <OverlayAlternative state={globalState}></OverlayAlternative>} />
+	</Switch>
+	</Router>
+	</div>
+  )
 }
 
 
