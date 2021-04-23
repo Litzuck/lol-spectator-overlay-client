@@ -4,7 +4,7 @@ import cx from "classnames";
 // import css from './style/index.less';
 import Ban from "./Ban";
 import "./index.css";
-
+import "./style/index_alt.css"
 import Pick from "./Pick";
 import Timer from "./Timer";
 
@@ -133,6 +133,7 @@ export default class Overlay extends React.Component {
 			<Ban key={"ban-" + index} {...ban} />
 		));
 
+
 		return (
 			<div
 				className="overlay"
@@ -156,7 +157,7 @@ export default class Overlay extends React.Component {
 						<div className="header-keystone-inner">
 							<div className="left-bg-section"></div>
 							<div className="right-bg-section"></div>
-							<div className="phase">{this.props.state.phase}</div>
+							<div className={cx("phase",{"transparent":this.props.state.phase===""})} >{this.props.state.phase}</div>
 						</div>
 					</div>
 

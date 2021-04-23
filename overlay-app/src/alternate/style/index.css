@@ -11,6 +11,7 @@ body{
     height: 450px;
     /* background-color: rgb(161, 161, 161); */
     display: flex;
+	background-color: rgba(0, 0, 0, 0);
 }
 
 .champion {
@@ -121,8 +122,8 @@ body{
 .midSpace{
     width: 200px;
     height: 315px;
-    background-color: turquoise;
-    background-color: #010010;;
+    /* background-color: turquoise; */
+    /* background-color: #010010;; */
 }
 .logo{
     width: 100%;

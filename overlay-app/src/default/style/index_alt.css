@@ -1,0 +1,11 @@
+.overlay{
+	background: rgba(0, 0 ,0, 0);
+}
+
+.champion-select-header, .champion-select-header::before, .header-keystone, .left-bg-section, .right-bg-section, .header-keystone-inner{
+	background: rgba(0, 0 ,0, 0);
+}
+
+.champion-select-header .header-keystone, .champion-select-header .header-keystone> .left-bg-section, .champion-select-header .header-keystone> .right-bg-section{
+	background: rgba(0, 0 ,0, 0);
+}

@@ -25,7 +25,7 @@ body{
   font-weight: 300;
 } */
 
-.champ-select-spectate-component {
+ .test{
   --left-side-color: #0b849e;
   --right-side-color: #be1e37;
   background: #000;
@@ -287,459 +287,278 @@ body{
 }
 
 
-.champ-select-spectate-component .my-bans .ban[data-id='115'],
-.champ-select-spectate-component .their-bans .ban[data-id='115'] {
+ .my-bans .ban[data-id='115'],
+ .their-bans .ban[data-id='115'] {
     background-position-x: 46%;
     background-position-y: 33%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='19'],
-.champ-select-spectate-component .their-bans .ban[data-id='19'] {
+ .my-bans .ban[data-id='19'],
+ .their-bans .ban[data-id='19'] {
     background-size: 281px;
     background-position-y: 50%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='106'],
-.champ-select-spectate-component .their-bans .ban[data-id='106'] {
+ .my-bans .ban[data-id='106'],
+ .their-bans .ban[data-id='106'] {
     background-position-y: 20%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='161'],
-.champ-select-spectate-component .their-bans .ban[data-id='161'] {
+ .my-bans .ban[data-id='161'],
+ .their-bans .ban[data-id='161'] {
     background-position-x: 47%;
     background-size: 295px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='44'],
-.champ-select-spectate-component .their-bans .ban[data-id='44'] {
+ .my-bans .ban[data-id='44'],
+ .their-bans .ban[data-id='44'] {
     background-position-x: 60%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='223'],
-.champ-select-spectate-component .their-bans .ban[data-id='223'] {
+ .my-bans .ban[data-id='223'],
+ .their-bans .ban[data-id='223'] {
     background-size: 300px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='13'],
-.champ-select-spectate-component .their-bans .ban[data-id='13'] {
+ .my-bans .ban[data-id='13'],
+ .their-bans .ban[data-id='13'] {
     background-position-x: 63%;
     background-position-y: 38%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='33'],
-.champ-select-spectate-component .their-bans .ban[data-id='33'] {
+ .my-bans .ban[data-id='33'],
+ .their-bans .ban[data-id='33'] {
     background-size: 373px;
     background-position-x: 55%;
     background-position-y: 35%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='75'],
-.champ-select-spectate-component .their-bans .ban[data-id='75'] {
+ .my-bans .ban[data-id='75'],
+ .their-bans .ban[data-id='75'] {
     background-size: 597px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='96'],
-.champ-select-spectate-component .their-bans .ban[data-id='96'] {
+ .my-bans .ban[data-id='96'],
+ .their-bans .ban[data-id='96'] {
     background-size: 300px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='240'],
-.champ-select-spectate-component .their-bans .ban[data-id='240'] {
+ .my-bans .ban[data-id='240'],
+ .their-bans .ban[data-id='240'] {
     background-size: 300px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='85'],
-.champ-select-spectate-component .their-bans .ban[data-id='85'] {
+ .my-bans .ban[data-id='85'],
+ .their-bans .ban[data-id='85'] {
     background-size: 321px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='74'],
-.champ-select-spectate-component .their-bans .ban[data-id='74'] {
+ .my-bans .ban[data-id='74'],
+ .their-bans .ban[data-id='74'] {
     background-size: 350px;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='28'],
-.champ-select-spectate-component .their-bans .ban[data-id='28'] {
+ .my-bans .ban[data-id='28'],
+ .their-bans .ban[data-id='28'] {
     background-position-y: 22%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='122'],
-.champ-select-spectate-component .their-bans .ban[data-id='122'] {
+ .my-bans .ban[data-id='122'],
+ .their-bans .ban[data-id='122'] {
     background-position-y: 19%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='136'],
-.champ-select-spectate-component .their-bans .ban[data-id='136'] {
+ .my-bans .ban[data-id='136'],
+ .their-bans .ban[data-id='136'] {
     background-position-x: 57%;
     background-size: 360px;
     background-position-y: 40%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='34'],
-.champ-select-spectate-component .their-bans .ban[data-id='34'] {
+ .my-bans .ban[data-id='34'],
+ .their-bans .ban[data-id='34'] {
     background-position-y: 36%;
 }
 
-.champ-select-spectate-component .my-bans .ban[data-id='142'],
-.champ-select-spectate-component .their-bans .ban[data-id='142'] {
+ .my-bans .ban[data-id='142'],
+ .their-bans .ban[data-id='142'] {
     background-size: 300px;
 }
 
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='268'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='268'] {
-    background-position-y: 24%;
-}
 
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='122'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='122'] {
-    background-position-y: 18%;
-}
 
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='28'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='28'] {
-    background-position-y: 29%;
-    background-size: 165%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='50'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='50'] {
-    background-position-y: 22%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='9'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='9'] {
-    background-size: 165%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='114'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='114'] {
-    background-position-y: 18%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='105'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='105'] {
-    background-position-y: 21%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='74'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='74'] {
-    background-size: 200%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='420'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='420'] {
-    background-position-y: 18%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='39'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='39'] {
-    background-size: 320%;
-    background-position-y: 26%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='222'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='222'] {
-    background-position-y: 24%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='10'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='10'] {
-    background-position-y: 18%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='240'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='240'] {
-    background-size: 180%;
-    background-position-y: 26%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='96'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='96'] {
-    background-size: 180%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='7'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='7'] {
-    background-position-y: 22%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='64'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='64'] {
-    background-position-y: 26%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='236'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='236'] {
-    background-position-y: 23%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='267'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='267'] {
-    background-position-y: 23%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='20'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='20'] {
-    background-position-y: 18%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='33'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='33'] {
-    background-size: 180%;
-    background-position-x: 67%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='13'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='13'] {
-    background-size: 205%;
-    background-position-x: 61%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='223'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='223'] {
-    background-size: 180%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='112'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='112'] {
-    background-position-y: 23%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='8'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='8'] {
-    background-position-y: 23%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='201'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='201'] {
-    background-position-y: 20%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='106'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='106'] {
-    background-size: 220%;
-    background-position-y: 17%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='19'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='19'] {
-    background-size: 170%;
-    background-position-y: 41%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='101'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='101'] {
-    background-position-y: 22%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='115'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='115'] {
-    background-size: 200%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='83'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='83'] {
-    background-position-y: 19%;
-    background-size: 170%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='85'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='85'] {
-    background-size: 170%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='202'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='202'] {
-    background-position-y: 25%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='110'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='110'] {
-    background-position-x: 46%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='161'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='161'] {
-    background-size: 166%;
-}
-
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .background[data-id='142'],
-.champ-select-spectate-component .summoner-object-component .summoner-object-wrapper .old-background[data-id='142'] {
-    background-size: 166%;
-}
-
-.champ-select-spectate-component [data-id='136'] {
+ [data-id='136'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='432'] {
+ [data-id='432'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='53'] {
+ [data-id='53'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='63'] {
+ [data-id='63'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='42'] {
+ [data-id='42'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='36'] {
+ [data-id='36'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='28'] {
+ [data-id='28'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='86'] {
+ [data-id='86'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='420'] {
+ [data-id='420'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='427'] {
+ [data-id='427'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='24'] {
+ [data-id='24'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='45'] {
+ [data-id='45'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='29'] {
+ [data-id='29'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='27'] {
+ [data-id='27'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='102'] {
+ [data-id='102'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='113'] {
+ [data-id='113'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='13'] {
+ [data-id='13'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='78'] {
+ [data-id='78'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='80'] {
+ [data-id='80'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='76'] {
+ [data-id='76'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='25'] {
+ [data-id='25'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='90'] {
+ [data-id='90'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='236'] {
+ [data-id='236'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='7'] {
+ [data-id='7'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='240'] {
+ [data-id='240'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='266'] {
+ [data-id='266'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='203'] {
+ [data-id='203'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='121'] {
+ [data-id='121'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='85'] {
+ [data-id='85'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='82'] {
+ [data-id='82'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='164'] {
+ [data-id='164'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='3'] {
+ [data-id='3'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='497'] {
+ [data-id='497'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='498'] {
+ [data-id='498'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='163'] {
+ [data-id='163'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='110'] {
+ [data-id='110'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='517'] {
+ [data-id='517'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='100'] {
+ [data-id='100'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='250'] {
+ [data-id='250'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='523'] {
+ [data-id='523'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='9'] {
+ [data-id='9'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='876'] {
+ [data-id='876'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='147'] {
+ [data-id='147'] {
     transform: scaleX(-1);
 }
 
-.champ-select-spectate-component [data-id='526'] {
+ [data-id='526'] {
     transform: scaleX(-1);
 }
