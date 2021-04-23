@@ -19,7 +19,6 @@ export default class Pick extends React.Component {
 		this.int = setInterval( ()=>{
 			var pos = document.getElementById(this.props.side+this.props.idx);
 			// pos.children[0].scrollWidth
-			
 			var name = pos.children[0];
 			if(pos.scrollWidth<name.scrollWidth){
 				fontSize*=0.9
@@ -36,14 +35,7 @@ export default class Pick extends React.Component {
 	render(){
 
 		let background
-		if (this.props.championId === 0) {
-			return (		
-			<div className="champion">
-				<div className="name" id={this.props.side+this.props.idx} >{this.props.summonerName}</div>
-				<div className="pos">{this.props.idx +1}</div>
-			</div>
-			)
-		} else if (this.props.championId > 0) {
+		if (this.props.championId > 0) {
 
 			return(
 				<div className="champion" style={{backgroundImage: `url(${require("../assets/splash-art/centered/" + this.props.championId + ".jpg").default})`}}>
@@ -52,6 +44,14 @@ export default class Pick extends React.Component {
 				</div>
 			)
 			}
+		else{
+			return (		
+				<div className="champion">
+					<div className="name" id={this.props.side+this.props.idx} ><p>{this.props.summonerName}</p></div>
+					<div className="pos">{this.props.idx +1}</div>
+				</div>
+				)
+		}
 		return (
 		<div className="champion">
 			<div className="name">{this.props.summonerName}</div>
