@@ -2,10 +2,11 @@ import express from "express";
 import WebSocket from "ws";
 import {ChampSelectStateApi, ChampSelectApi} from "lol-esports-spectate";
 import * as path from "path";
+import { State } from "lol-esports-spectate/dist/Interfaces";
 const app = express();
 
 const PORT:number = 8000;
-const REPLAY: boolean = true;
+const REPLAY: boolean = false;
 
 
 console.log("  .____          .____       _________                     __          __               ________                    .__   ");             
@@ -19,7 +20,7 @@ console.log("          \\/             \\/        \\/|__|        \\/     \\/    
 //     res.send("Hello OBS World!");
 // });
 app.listen(PORT, () =>{
-    console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+    console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 })
 
 // app.use(express.static('public'))
@@ -32,6 +33,35 @@ app.get('/', function (req, res) {
 
 let webSock = new WebSocket.Server({port:8080})
 
+var api = new ChampSelectStateApi(REPLAY,"./overlay-app/src/assets/replay_full_copy.json");
+
+var currentState = null;
+var currentPickOrder = null;
+var currentChampionSelectEnded = false;
+var currentChampionSelectStarted = false
+
+
+	api.on("newState", function (data) {
+		currentState = data;
+		console.log("Event newState")
+	});
+
+	api.on("championSelectStarted", function () {
+		currentChampionSelectStarted = true;
+		currentChampionSelectEnded = false;
+		console.log("championSelectStarted")
+	});
+
+	api.on("championSelectEnd", function(){
+		currentChampionSelectStarted = true;
+		currentChampionSelectEnded = true;
+		console.log("championSelectEnded")
+	})
+
+	api.on("newPickOrder", function (data){
+		currentPickOrder = data;
+		console.log("newPickOrder");
+	})
 
 webSock.on("connection", function connection(ws){
 	console.log("new connection opened")
@@ -39,31 +69,76 @@ webSock.on("connection", function connection(ws){
     //     console.log("received: %s", message);
     //     ws.send("hello client");
     // });
+	// if(REPLAY){
+	// 	api = new ChampSelectStateApi(REPLAY,"./overlay-app/src/assets/replay_full.json");
+	// }
 
-	var api = new ChampSelectStateApi(REPLAY,"./overlay-app/src/assets/replay_full.json");
-
-
-	api.on("newState", function (data) {
-		ws.send(JSON.stringify({"event":"newState", "data":data}))
-		console.log("Event newState")
-	});
-
-	// api.lis
-	api.on("championSelectStarted", function () {
+	if(currentChampionSelectStarted)
 		ws.send(JSON.stringify({"event":"championSelectStarted"}))
-		console.log("championSelectStarted")
-	});
-
-	api.on("championSelectEnd", function(){
+	if(currentChampionSelectEnded)
 		ws.send(JSON.stringify({"event":"championSelectEnded"}))
-		console.log("championSelectEnded")
-	})
+	if(currentState!=null)
+		ws.send(JSON.stringify({"event":"newState", "data":currentState}));
+	if(currentPickOrder!=null)
+		ws.send(JSON.stringify({"event":"newPickOrder", "data":currentPickOrder}))
 
-	api.on("newPickOrder", function (data){
-		ws.send(JSON.stringify({"event":"newPickOrder", "data":data}))
-		console.log("newPickOrder")
-		// console.log(data)
-	})
+	const newState = (state:State) => {
+		ws.send(JSON.stringify({"event":"newState", "data":state}))
+		// console.log("Event newState")
+	};
+
+	const championSelectStarted = () =>{
+		ws.send(JSON.stringify({"event":"championSelectStarted"}))
+		// console.log("championSelectStarted")
+	};
+
+	const championSelectEnded = ()=>{
+		ws.send(JSON.stringify({"event":"championSelectEnded"}))
+		// console.log("championSelectEnded")
+	};
+
+	const newPickOrder = (state:State)=>{
+		ws.send(JSON.stringify({"event":"newPickOrder", "data":state}))
+		// console.log("newPickOrder")
+	}
+	
+
+
+	//ws.on("open", () =>{
+		api.addListener("newState", newState);
+		api.addListener("championSelectStarted", championSelectStarted);
+		api.addListener("championSelectEnd", championSelectEnded);
+		api.addListener("newPickOrder", newPickOrder);
+	//})
+
+	// ws.on("close",()=>{
+	// 	api.removeListener("newState", newState);
+	// 	api.removeListener("championSelectStarted", championSelectStarted);
+	// 	api.removeListener("championSelectEnd", championSelectEnded);
+	// 	api.removeListener("newPickOrder", newPickOrder);
+	// })
+
+	// api.on("newState", function (data) {
+	// 	ws.send(JSON.stringify({"event":"newState", "data":data}))
+	// 	console.log("Event newState")
+	// });
+
+	// // api.lis
+	// api.on("championSelectStarted", function () {
+	// 	ws.send(JSON.stringify({"event":"championSelectStarted"}))
+	// 	console.log("championSelectStarted")
+	// });
+
+	// api.on("championSelectEnd", function(){
+	// 	ws.send(JSON.stringify({"event":"championSelectEnded"}))
+	// 	console.log("championSelectEnded")
+	// })
+
+	// api.on("newPickOrder", function (data){
+	// 	ws.send(JSON.stringify({"event":"newPickOrder", "data":data}))
+	// 	console.log("newPickOrder")
+	// 	// console.log(data)
+	// })
 
 	
 
@@ -72,6 +147,9 @@ webSock.on("connection", function connection(ws){
 
     // ws.send("something")
 })
+
+
+
 
 
 
