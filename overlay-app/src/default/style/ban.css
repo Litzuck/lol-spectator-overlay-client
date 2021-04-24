@@ -36,9 +36,9 @@
 }
 
 
-.ban-wrapper.completed {
+/* .ban-wrapper.completed {
     animation: champBannedAnimation 1s ease-out forwards;
-}
+} */
 
 .ban-wrapper.completed .ban-icon {
     -webkit-filter: brightness(1);

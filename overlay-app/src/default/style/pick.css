@@ -126,10 +126,10 @@ opacity: 1;
 }
 
 
-.summoner-object-component.champion-locked
+/* .summoner-object-component.champion-locked
 .background {
 animation: champLockedInAnimation 1.5s ease-out;
-}
+} */
 
 
 #blueParty
