@@ -8,7 +8,6 @@ const app = express();
 const PORT:number = 8000;
 const REPLAY: boolean = false;
 
-
 console.log("  .____          .____       _________                     __          __               ________                    .__   ");             
 console.log("  |    |    ____ |    |     /   _____/_____   ____   _____/  |______ _/  |_  ___________\\_____  \\___  __ ___________|  | _____  ___.__.");
 console.log("  |    |   /  _ \\|    |     \\_____  \\\\____ \\_/ __ \\_/ ___\\   __\\__  \\\\   __\\/  _ \\_  __ \\/   |   \\  \\/ // __ \\_  __ \\  | \\__  \\<   |  |");
@@ -16,9 +15,12 @@ console.log("  |    |__(  <_> )    |___  /        \\  |_> >  ___/\\  \\___|  |  
 console.log("  |_______ \\____/|_______ \\/_______  /   __/ \\___  >\\___  >__| (____  /__|  \\____/|__|  \\_______  /\\_/  \\___  >__|  |____(____  / ____|");
 console.log("          \\/             \\/        \\/|__|        \\/     \\/          \\/                          \\/          \\/                \\/\\/     ");
 
+
+// console.log("\r\n\u2588\u2591\u2591\u2003\u2588\u2580\u2588\u2003\u2588\u2591\u2591\u2003\u2588\u2580\u2003\u2588\u2580\u2588\u2003\u2588\u2580\u2580\u2003\u2588\u2580\u2580\u2003\u2580\u2588\u2580\u2003\u2584\u2580\u2588\u2003\u2580\u2588\u2580\u2003\u2588\u2580\u2588\u2003\u2588\u2580\u2588\u2003\u2588\u2580\u2588\u2003\u2588\u2591\u2588\u2003\u2588\u2580\u2580\u2003\u2588\u2580\u2588\u2003\u2588\u2591\u2591\u2003\u2584\u2580\u2588\u2003\u2588\u2584\u2588\r\n\u2588\u2584\u2584\u2003\u2588\u2584\u2588\u2003\u2588\u2584\u2584\u2003\u2584\u2588\u2003\u2588\u2580\u2580\u2003\u2588\u2588\u2584\u2003\u2588\u2584\u2584\u2003\u2591\u2588\u2591\u2003\u2588\u2580\u2588\u2003\u2591\u2588\u2591\u2003\u2588\u2584\u2588\u2003\u2588\u2580\u2584\u2003\u2588\u2584\u2588\u2003\u2580\u2584\u2580\u2003\u2588\u2588\u2584\u2003\u2588\u2580\u2584\u2003\u2588\u2584\u2584\u2003\u2588\u2580\u2588\u2003\u2591\u2588\u2591")
 // app.get("/", (req,res) => {
 //     res.send("Hello OBS World!");
 // });
+
 app.listen(PORT, () =>{
     console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 })
@@ -31,9 +33,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname,"..","overlay-app",  'build','index.html'));
 });
 
+app.get('/alt', function (req, res) {
+	res.sendFile(path.join(__dirname,"..","overlay-app",  'build','index.html'));
+});
+
 let webSock = new WebSocket.Server({port:8080})
 
-var api = new ChampSelectStateApi(REPLAY,"./overlay-app/src/assets/replay_full_copy.json");
+var api = new ChampSelectStateApi(REPLAY,"./overlay-app/src/assets/replay_full.json");
 
 var currentState = null;
 var currentPickOrder = null;
