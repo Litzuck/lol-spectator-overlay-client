@@ -24,40 +24,40 @@ function App() {
   // console.log(replay)
   useEffect(() => {
 
-	let ws = new WebSocket("ws://localhost:8080")
-	var endTimeout= null;
-	ws.onopen = function(ev){
-		console.log(ev)
-		ws.send("hello")
-	}
-	ws.onmessage = function(msg) {
-		console.log(msg)
-		var msgJson = JSON.parse(msg.data)
-		console.log(msgJson)
-		if(msgJson.event==="championSelectStarted"){
-			setChampSelectEnded(false);
-			// if(endTimeout!=null)
-			// 	clearTimeout(endTimeout);
-			// endTimeout=null;
-		}
-		if(msgJson.event==="newState"){
-			setGlobalState(msgJson.data)
-		}
-		if(msgJson.event==="championSelectEnded"){
-			console.log("champSelectEnded")
-			// endTimeout = setTimeout(()=>{
-				setChampSelectEnded(true)
-				setGlobalState(pickOrderState)
-			// }, 5*60*1000)
+	// let ws = new WebSocket("ws://localhost:8080")
+	// var endTimeout= null;
+	// ws.onopen = function(ev){
+	// 	console.log(ev)
+	// 	ws.send("hello")
+	// }
+	// ws.onmessage = function(msg) {
+	// 	console.log(msg)
+	// 	var msgJson = JSON.parse(msg.data)
+	// 	console.log(msgJson)
+	// 	if(msgJson.event==="championSelectStarted"){
+	// 		setChampSelectEnded(false);
+	// 		// if(endTimeout!=null)
+	// 		// 	clearTimeout(endTimeout);
+	// 		// endTimeout=null;
+	// 	}
+	// 	if(msgJson.event==="newState"){
+	// 		setGlobalState(msgJson.data)
+	// 	}
+	// 	if(msgJson.event==="championSelectEnded"){
+	// 		console.log("champSelectEnded")
+	// 		// endTimeout = setTimeout(()=>{
+	// 			setChampSelectEnded(true)
+	// 			setGlobalState(pickOrderState)
+	// 		// }, 5*60*1000)
 
-		}
+	// 	}
 
-		if(msgJson.event==="newPickOrder"){
-			console.log("newPickOrder")
-			pickOrderState=msgJson.data;
-			console.log(pickOrderState)
-		}
-	}
+	// 	if(msgJson.event==="newPickOrder"){
+	// 		console.log("newPickOrder")
+	// 		pickOrderState=msgJson.data;
+	// 		console.log(pickOrderState)
+	// 	}
+	// }
 	// var c =0;
 
 	// setInterval(()=>{
