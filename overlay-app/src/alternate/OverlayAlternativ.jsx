@@ -141,7 +141,10 @@ export default class OverlayAlternative extends React.Component {
 			}
 			if(msgJson.event==="championSelectEnded"){
 				console.log("champSelectEnded")
-				_this.setState(_this.pickOrderState)
+				setTimeout(() => {
+					_this.setState(_this.pickOrderState)
+				},500)
+				
 				// endTimeout = setTimeout(()=>{
 					// setChampSelectEnded(true)
 					// setGlobalState(pickOrderState)

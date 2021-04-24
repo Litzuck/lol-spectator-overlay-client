@@ -6,7 +6,7 @@ import { State } from "lol-esports-spectate/dist/Interfaces";
 const app = express();
 
 const PORT:number = 8000;
-const REPLAY: boolean = false;
+const REPLAY: boolean = true;
 
 console.log("  .____          .____       _________                     __          __               ________                    .__   ");             
 console.log("  |    |    ____ |    |     /   _____/_____   ____   _____/  |______ _/  |_  ___________\\_____  \\___  __ ___________|  | _____  ___.__.");
@@ -81,12 +81,14 @@ webSock.on("connection", function connection(ws){
 
 	if(currentChampionSelectStarted)
 		ws.send(JSON.stringify({"event":"championSelectStarted"}))
-	if(currentChampionSelectEnded)
-		ws.send(JSON.stringify({"event":"championSelectEnded"}))
 	if(currentState!=null)
 		ws.send(JSON.stringify({"event":"newState", "data":currentState}));
 	if(currentPickOrder!=null)
 		ws.send(JSON.stringify({"event":"newPickOrder", "data":currentPickOrder}))
+	if(currentChampionSelectEnded)
+		ws.send(JSON.stringify({"event":"championSelectEnded"}))
+
+
 
 	const newState = (state:State) => {
 		ws.send(JSON.stringify({"event":"newState", "data":state}))
