@@ -6,7 +6,7 @@ import { State } from "lol-esports-spectate/dist/Interfaces";
 const app = express();
 
 const PORT:number = 8000;
-const REPLAY: boolean = true;
+const REPLAY: boolean = false;
 
 console.log("  .____          .____       _________                     __          __               ________                    .__   ");             
 console.log("  |    |    ____ |    |     /   _____/_____   ____   _____/  |______ _/  |_  ___________\\_____  \\___  __ ___________|  | _____  ___.__.");
