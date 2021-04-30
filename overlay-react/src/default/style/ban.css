@@ -1,0 +1,145 @@
+.ban-background {
+    background: #161719;
+    width: 81px;
+    height: 83px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ban-wrapper {
+    width: 81px;
+    height: 83px;
+    position: relative;
+}
+
+
+.ban-wrapper .ban-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.ban-wrapper .ban-icon {
+    content: "";
+    width: 28px;
+    height: 28px;
+    background: url("../../assets/ban-icon.png");
+    background-size: 28px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 28px;
+    -webkit-filter: brightness(0.3) contrast(0.85);
+    transition: all 0.1s cubic-bezier(0.29, 0.27, 0.5, 0.95);
+}
+
+
+/* .ban-wrapper.completed {
+    animation: champBannedAnimation 1s ease-out forwards;
+} */
+
+.ban-wrapper.completed .ban-icon {
+    -webkit-filter: brightness(1);
+    top: 68px;
+}
+
+.ban {
+    width: 105px;
+    height: 99px;
+    background-size: 431px;
+    background-position-x: 51%;
+    background-position-y: 27%;
+    margin-right: 2px;
+    position: absolute;
+    top: 0;
+    left: -13px;
+    opacity: 1;
+    transition: opacity 0.2s;
+}
+
+.ban:last-child {
+    margin-right: 0;
+}
+
+.ban.no-champion {
+    opacity: 0;
+}
+
+
+#blueBans {
+    left: 43px;
+}
+
+#blueBans .ban-wrapper {
+    margin-right: 4px;
+}
+
+#blueBans .ban-wrapper:nth-child(3) {
+    margin-right: 34px;
+}
+
+#blueBans .ban-wrapper .ban-icon {
+    right: 26px;
+}
+
+#blueBans .ban-wrapper.completed .ban-icon {
+    right: 19px;
+}
+
+#blueBans .ban-wrapper.active .ban-background {
+    border-right: 5px solid var(--left-side-color);
+    width: 77px;
+}
+
+#blueBans .ban-background {
+    transform: skew(14deg);
+}
+
+#blueBans .ban-container {
+    transform: skew(-14deg);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#redBans {
+    right: 43px;
+    flex-direction: row-reverse;
+}
+
+#redBans .ban-wrapper {
+    margin-left: 4px;
+}
+
+#redBans .ban-wrapper:nth-child(3) {
+    margin-left: 34px;
+}
+
+#redBans .ban-wrapper .ban-icon {
+    left: 31px;
+    transform: scaleX(-1);
+}
+
+#redBans .ban-wrapper.completed .ban-icon {
+    left: 23px;
+}
+
+
+#redBans .ban-wrapper.active .ban-background {
+    border-left: 5px solid var(--right-side-color);
+    width: 77px;
+}
+
+#redBans .ban-background {
+    transform: skew(-14deg);
+    margin-left: 4px;
+}
+
+#redBans .ban-container {
+    transform: scaleX(-1) skew(-14deg);
+    background-position-x: 49%;
+}

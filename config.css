@@ -30,3 +30,11 @@ body {
 .box .row.footer {
   flex: 0 1 40px;
 }
+
+.container{
+	display: flex;
+}
+
+.containerSub{
+	display: block;
+}
