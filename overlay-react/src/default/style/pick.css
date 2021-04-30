@@ -1,0 +1,708 @@
+
+
+.summoner-object-component
+.summoner-object-wrapper {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+letter-spacing: 0.8px;
+font-size: 16px;
+font-weight: 300;
+text-shadow: 1px 1px 2px #000, 0px 1px 2px #000, 0px 0px 3px #000,
+  0px 0px 3px #000, 1px 1px 4px #000;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.background,
+
+.summoner-object-component
+.summoner-object-wrapper
+.old-background {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background-size: 241%;
+background-position: 52% 28%;
+opacity: 1;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.background-wrapper {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+direction: ltr;
+opacity: 0;
+position: absolute;
+bottom: 20px;
+transition: opacity 0.2s;
+}
+
+
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+opacity: 0;
+position: absolute;
+top: 0;
+width: 0;
+height: 100%;
+border-left: 0px solid #000;
+border-right: 0px solid #000;
+transition: width 0.15s;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spells {
+opacity: 1;
+transition: opacity 0.3s;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+width: 30px;
+border: 2px solid #000;
+position: absolute;
+box-shadow: 0 0 1px #000;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell:first-child {
+top: 7px;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.spell:nth-child(2) {
+top: 39px;
+}
+
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+position: absolute;
+bottom: 2px;
+transition: left 0.2s, right 0.2s;
+}
+
+
+.summoner-object-component.no-champion
+.spells {
+opacity: 0;
+}
+
+
+.summoner-object-component.is-picking-now
+.action-text {
+opacity: 1;
+}
+
+
+.summoner-object-component.champion-not-locked
+.background,
+
+.summoner-object-component.champion-not-locked
+.old-background {
+-webkit-filter: brightness(0.8);
+}
+
+
+/* .summoner-object-component.champion-locked
+.background {
+animation: champLockedInAnimation 1.5s ease-out;
+} */
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+left: 11px;
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+right: 9px;
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+right: 0px;
+background: var(--left-side-color);
+}
+
+#blueParty .summoner-object-component{
+  color: var(--left-side-text-color);
+}
+
+#redParty .summoner-object-component{
+  color: var(--right-side-text-color);
+}
+
+
+#blueParty
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+right: 15px;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.edge-border {
+width: 4px;
+border-left: 3px solid #000;
+opacity: 1;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.summoner-name {
+right: 15px;
+}
+
+
+#blueParty
+.summoner-object-component.is-picking-now
+.action-text {
+animation: fadeInRightAnimation 0.2s,
+  flickerAnimation 3s 0.2s cubic-bezier(0.21, 0.89, 0.2, 0.88) infinite;
+}
+
+
+#blueParty
+.summoner-object-component
+.background-wrapper {
+transform: scaleX(-1);
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.spell {
+right: 11px;
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.summoner-name {
+left: 10px;
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.edge-border {
+left: 0px;
+background: var(--right-side-color);
+}
+
+
+#redParty
+.summoner-object-component
+.summoner-object-wrapper
+.action-text {
+left: 15px;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.edge-border {
+width: 4px;
+border-right: 3px solid #000;
+opacity: 1;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.summoner-name {
+left: 15px;
+}
+
+
+#redParty
+.summoner-object-component.is-picking-now
+.action-text {
+animation: fadeInLeftAnimation 0.2s,
+  flickerAnimation 3s 0.2s cubic-bezier(0.21, 0.89, 0.2, 0.88) infinite;
+}
+
+
+.party .summoner-wrapper {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  margin-bottom: 4px;
+}
+
+ .party .summoner-wrapper:nth-child(3) {
+  margin-bottom: 23px;
+}
+
+
+  .party
+  .summoner-wrapper
+  .base-color-background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-filter: saturate(0.6);
+}
+
+
+  .party
+  .summoner-wrapper
+  .gradient-background-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.83) 0%,
+    rgba(0, 0, 0, 0.72) 50%,
+    rgba(0, 0, 0, 0.83) 100%
+  );
+}
+
+
+  .party
+  .summoner-wrapper:first-child
+  .gradient-background-overlay {
+  background-image: radial-gradient(
+    ellipse 82% 128% at 50% 90%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.91) 100%
+  );
+}
+
+
+  .party
+  .summoner-wrapper:last-child
+  .gradient-background-overlay {
+  background-image: radial-gradient(
+    ellipse 82% 128% at 50% 10%,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.91) 100%
+  );
+}
+
+
+  #blueParty
+  .summoner-wrapper
+  .base-color-background {
+  background: var(--left-side-color);
+}
+
+
+  #redParty
+  .summoner-wrapper
+  .base-color-background {
+  background: var(--right-side-color);
+  }
+
+@-moz-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-webkit-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-o-keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@keyframes flickerAnimation {
+20% {
+  opacity: 1;
+}
+60% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@-moz-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-webkit-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-o-keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@keyframes fadeInRightAnimation {
+0% {
+  opacity: 0;
+  right: 23px;
+}
+100% {
+  opacity: 1;
+  right: 15px;
+}
+}
+
+@-moz-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-webkit-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-o-keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@keyframes fadeInLeftAnimation {
+0% {
+  opacity: 0;
+  left: 23px;
+}
+100% {
+  opacity: 1;
+  left: 15px;
+}
+}
+
+@-moz-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@-webkit-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@-o-keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+@keyframes champLockedInAnimation {
+0% {
+  -webkit-filter: brightness(1);
+}
+4% {
+  -webkit-filter: brightness(1.8);
+}
+100% {
+  -webkit-filter: brightness(1);
+}
+}
+
+
+
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='268'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='268'] {
+    background-position-y: 24%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='122'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='122'] {
+    background-position-y: 18%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='28'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='28'] {
+    background-position-y: 29%;
+    background-size: 165%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='50'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='50'] {
+    background-position-y: 22%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='9'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='9'] {
+    background-size: 165%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='114'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='114'] {
+    background-position-y: 18%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='105'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='105'] {
+    background-position-y: 21%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='74'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='74'] {
+    background-size: 200%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='420'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='420'] {
+    background-position-y: 18%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='39'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='39'] {
+    background-size: 320%;
+    background-position-y: 26%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='222'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='222'] {
+    background-position-y: 24%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='10'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='10'] {
+    background-position-y: 18%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='240'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='240'] {
+    background-size: 180%;
+    background-position-y: 26%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='96'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='96'] {
+    background-size: 180%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='7'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='7'] {
+    background-position-y: 22%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='64'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='64'] {
+    background-position-y: 26%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='236'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='236'] {
+    background-position-y: 23%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='267'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='267'] {
+    background-position-y: 23%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='20'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='20'] {
+    background-position-y: 18%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='33'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='33'] {
+    background-size: 180%;
+    background-position-x: 67%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='13'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='13'] {
+    background-size: 205%;
+    background-position-x: 61%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='223'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='223'] {
+    background-size: 180%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='112'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='112'] {
+    background-position-y: 23%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='8'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='8'] {
+    background-position-y: 23%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='201'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='201'] {
+    background-position-y: 20%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='106'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='106'] {
+    background-size: 220%;
+    background-position-y: 17%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='19'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='19'] {
+    background-size: 170%;
+    background-position-y: 41%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='101'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='101'] {
+    background-position-y: 22%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='115'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='115'] {
+    background-size: 200%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='83'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='83'] {
+    background-position-y: 19%;
+    background-size: 170%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='85'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='85'] {
+    background-size: 170%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='202'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='202'] {
+    background-position-y: 25%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='110'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='110'] {
+    background-position-x: 46%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='161'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='161'] {
+    background-size: 166%;
+}
+
+ .summoner-object-component .summoner-object-wrapper .background[data-id='142'],
+ .summoner-object-component .summoner-object-wrapper .old-background[data-id='142'] {
+    background-size: 166%;
+}
