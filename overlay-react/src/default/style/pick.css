@@ -706,3 +706,9 @@ animation: fadeInLeftAnimation 0.2s,
  .summoner-object-component .summoner-object-wrapper .old-background[data-id='142'] {
     background-size: 166%;
 }
+
+.summoner-object-component .summoner-object-wrapper .background[data-id='887'],
+.summoner-object-component .summoner-object-wrapper .old-background[data-id='887'] {
+   background-size: 320%;
+   background-position-y: 10%;
+}
