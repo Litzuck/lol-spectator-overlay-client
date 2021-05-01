@@ -1,6 +1,6 @@
 {
   "name": "lol-esports-spectate-client",
-  "version": "2.0.3",
+  "version": "2.0.1",
   "description": "Esports spectate example",
   "main": "dist/main.js",
   "scripts": {
