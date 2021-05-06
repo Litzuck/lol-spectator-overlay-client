@@ -4,8 +4,8 @@ This is a tool that produces a custom League of Legends Champion Select Overlay 
 
 ## Usage
 
-Just download the latest release for your platform and you are nearly ready to go.  
-After that you just have to join a custom lobby AS A SPECTATOR and press the button `Start Overlay`. 
+Just download the latest release for your platform and you are nearly ready to go. 
+First run the `lol-esports-spectate-client.exe` and after that you just have to join a custom lobby AS A SPECTATOR and press the button `Start Overlay`. 
 If there is some weird behavior you can restart the Overlay by using `Stop Overlay` and `Start Overlay`, which should fix most errors.
 Furthermore you can customize the colors of the overlay with the different color pickers.   
 
