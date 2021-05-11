@@ -33,18 +33,18 @@ export default class Overlay extends React.Component {
 			],
 
 			blueBans: [
-				{},{},{},{},{},
+				{}, {}, {}, {}, {},
 			],
 			redBans: [
-				{},{},{},{},{},
+				{}, {}, {}, {}, {},
 			],
 			phase: "Pick Phase 1",
 			actingSide: "blue",
 		};
 		this.config = {
-			blueColor:"#0b849e",
-			redColor:"#be1e37",
-			timerColor:"#ffffff",
+			blueColor: "#0b849e",
+			redColor: "#be1e37",
+			timerColor: "#ffffff",
 			blueTextColor: "#fff",
 			redTextColor: "#fff",
 			phaseTextColor: "#fff",
@@ -52,45 +52,45 @@ export default class Overlay extends React.Component {
 	}
 
 
-	componentDidMount(){
+	componentDidMount() {
 		let ws = new ReconnectingWebSocket("ws://localhost:8080")
-		var endTimeout= null;
+		var endTimeout = null;
 		let _this = this
-		ws.onopen = function(ev){
+		ws.onopen = function (ev) {
 			// console.log(ev)
 			// ws.send("hello")
 		}
-		ws.onmessage = function(msg) {
+		ws.onmessage = function (msg) {
 			console.log(msg)
 			var msgJson = JSON.parse(msg.data)
 			console.log(msgJson)
-			if(msgJson.event==="championSelectStarted"){
+			if (msgJson.event === "championSelectStarted") {
 				// setChampSelectEnded(false);
 				_this.champSelectEnded = false
 				// if(endTimeout!=null)
 				// 	clearTimeout(endTimeout);
 				// endTimeout=null;
 			}
-			if(msgJson.event==="newState"){
+			if (msgJson.event === "newState") {
 				// setGlobalState(msgJson.data)
 				console.log(this)
 				_this.setState(msgJson.data)
 			}
-			if(msgJson.event==="championSelectEnded"){
+			if (msgJson.event === "championSelectEnded") {
 				console.log("champSelectEnded")
 				// endTimeout = setTimeout(()=>{
-					// setChampSelectEnded(true)
-					// setGlobalState(pickOrderState)
+				// setChampSelectEnded(true)
+				// setGlobalState(pickOrderState)
 				// }, 5*60*1000)
-	
+
 			}
-			if(msgJson.event==="newConfig"){
+			if (msgJson.event === "newConfig") {
 				console.log(msgJson.data)
 				_this.config = msgJson.data
 				_this.setState(_this.state)
-				
+
 			}
-	
+
 			// if(msgJson.event==="newPickOrder"){
 			// 	console.log("newPickOrder")
 			// 	pickOrderState=msgJson.data;
@@ -106,38 +106,51 @@ export default class Overlay extends React.Component {
 		var bluePicks = [];
 		var redPicks = [];
 
-		if(this.config.enableCustomNames){
-		bluePicks = this.state.bluePicks.map((pick, index) => (
-			<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index]} />
-		));
-		redPicks = this.state.redPicks.map((pick, index) => (
-			<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index+5]}/>
-		));
-		}
-		else{
-			bluePicks = this.state.bluePicks.map((pick, index) => (
-				<Pick key={"pick-" + index} {...pick} />
-			));
-			redPicks = this.state.redPicks.map((pick, index) => (
-				<Pick key={"pick-" + index} {...pick}/>
-			));
+		if (this.state.bluePicks) {
+			if (this.config.enableCustomNames) {
+				bluePicks = this.state.bluePicks.map((pick, index) => (
+					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index]} />
+				));
+			}
+			else {
+				bluePicks = this.state.bluePicks.map((pick, index) => (
+					<Pick key={"pick-" + index} {...pick} />
+				));
+			}
 		}
 
+		if (this.state.redPicks) {
+			if (this.config.enableCustomNames) {
+				redPicks = this.state.redPicks.map((pick, index) => (
+					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index + 5]} />
+				));
+			}
+			else {
+				redPicks = this.state.redPicks.map((pick, index) => (
+					<Pick key={"pick-" + index} {...pick} />
+				));
+			}
+		}
 
 		var blueBans = [];
 		var redBans = [];
 
-		blueBans = this.state.blueBans.map((ban, index) => (
-			<Ban key={"ban-" + index} {...ban} />
-		));
-		redBans = this.state.redBans.map((ban, index) => (
-			<Ban key={"ban-" + index} {...ban} />
-		));
+		if (this.state.blueBans) {
+			blueBans = this.state.blueBans.map((ban, index) => (
+				<Ban key={"ban-" + index} {...ban} />
+			));
+		}
+		if (this.state.redBans) {
+			redBans = this.state.redBans.map((ban, index) => (
+				<Ban key={"ban-" + index} {...ban} />
+			));
+		}
 
-		var style = {"--left-side-color":this.config.blueColor,"--right-side-color":this.config.redColor, "--timer-color": this.config.timerColor, "width":1280, "height":720, "zoom":1.25,
-		 "--left-side-text-color": this.config.blueTextColor, "--right-side-text-color": this.config.redTextColor ,"--phase-text-color": this.config.phaseTextColor};
-		
-		console.log(this.config.blueColor)
+		var style = {
+			"--left-side-color": this.config.blueColor, "--right-side-color": this.config.redColor, "--timer-color": this.config.timerColor, "width": 1280, "height": 720, "zoom": 1.25,
+			"--left-side-text-color": this.config.blueTextColor, "--right-side-text-color": this.config.redTextColor, "--phase-text-color": this.config.phaseTextColor
+		};
+
 		return (
 			<div
 				className="overlay"
@@ -161,7 +174,7 @@ export default class Overlay extends React.Component {
 						<div className="header-keystone-inner">
 							<div className="left-bg-section"></div>
 							<div className="right-bg-section"></div>
-							<div className={cx("phase",{"transparent":this.state.phase===""})} >{this.state.phase}</div>
+							<div className={cx("phase", { "transparent": this.state.phase === "" })} >{this.state.phase}</div>
 						</div>
 					</div>
 
