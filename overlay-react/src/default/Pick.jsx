@@ -2,6 +2,7 @@ import React from "react"
 import "./style/pick.css"
 
 import cx from "classnames"
+import Spell from "./Spell"
 
 export default class Pick extends React.Component {
 	static defaultProps = {
@@ -15,12 +16,11 @@ export default class Pick extends React.Component {
 	render() {
 
 		let background
-		if (this.props.championId === 0) {
-			background = <div className="background"></div>
-		} else if (this.props.championId > 0) {
+		if (this.props.championId > 0) {
 			background = <div className="background" style={{ backgroundImage: `url(${require("../assets/splash-art/centered/" + this.props.championId + ".jpg").default})` }} data-id={this.props.championId}></div>
-
-			// pick = <div class="ban" style={{ backgroundImage: `url(${require("../assets/splash-art/centered/"+this.props.championId+".jpg").default})`}}></div>
+		}
+		else {
+			background = <div className="background"></div>
 		}
 
 		let pick = <div className={cx("summoner-object-component"
@@ -35,8 +35,8 @@ export default class Pick extends React.Component {
 				<div className="action-text">Picking</div>
 				<div className="summoner-name">{this.props.summonerName}</div>
 				<div className="spells">
-					<img className="spell" src={require("../assets/summoner-spells/" + this.props.spellId1 + ".png").default} alt="" />
-					<img className="spell" src={require("../assets/summoner-spells/" + this.props.spellId2 + ".png").default} alt="" />
+					<Spell spellId={this.props.spellId1} />
+					<Spell spellId={this.props.spellId2} />
 				</div>
 				<div className="edge-border"></div>
 			</div>
