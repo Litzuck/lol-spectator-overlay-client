@@ -38,3 +38,16 @@ body {
 .containerSub{
 	display: block;
 }
+
+.color-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

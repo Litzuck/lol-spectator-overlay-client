@@ -48,6 +48,10 @@ export default class Overlay extends React.Component {
 			blueTextColor: "#fff",
 			redTextColor: "#fff",
 			phaseTextColor: "#fff",
+			blueTeamName: "",
+			blueTeamSubtext: "",
+			redTeamName: "",
+			redTeamSubText: "",
 		}
 	}
 
@@ -97,10 +101,7 @@ export default class Overlay extends React.Component {
 			// 	console.log(pickOrderState)
 			// }
 		}
-
-
 	}
-
 
 	render() {
 		var bluePicks = [];
@@ -123,7 +124,6 @@ export default class Overlay extends React.Component {
 			));
 		}
 
-
 		var blueBans = [];
 		var redBans = [];
 
@@ -145,6 +145,10 @@ export default class Overlay extends React.Component {
 				className={cx("overlay", this.state.actingSide + "-acting")}
 			>
 				<div className="champion-select-header">
+					<div className="blue-team-info">
+						<h1>{this.config.blueTeamName}</h1>
+						<h5>{this.config.blueTeamSubtext}</h5>
+					</div>
 					<Timer
 						side="blue"
 						visible={
@@ -175,6 +179,10 @@ export default class Overlay extends React.Component {
 						actingSide={this.state.actingSide}
 						timestamp={this.state.timestamp}
 					/>
+					<div className="red-team-info">
+						<h1>{this.config.redTeamName}</h1>
+						<h5>{this.config.redTeamSubText}</h5>
+					</div>
 				</div>
 
 				<div className="party" id="blueParty">
