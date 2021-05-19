@@ -14,10 +14,23 @@ Furthermore you can customize the colors of the overlay with the different color
 ![alt text](example.png "Logo Title Text 1")
 
 
+## Development
+
+### Electron Development
+
+To start the Electron application use `npm start`. You have to restart the Electron application everytime you make some changes to the Electron.
+For more information look at Electrons documentation [here](https://www.electronjs.org/docs).
+
+To build the application you can either run `npm run build`, whichs builds the Electron application using `electron-forge` and outputs it to the `out` folder.
+
+### React Development
+
+To develop the React Overlay, you can use `npm start` in the `overlay-react` folder to start the development server. For more information about React have a look at the React documentation [here](https://reactjs.org/docs/getting-started.html).
+After you made your changes you can use `npm run build` to create a production build, which will be output to the `build` folder in the main directory and will be packaged into your Electron application, when you build it.
 ## Creating custom overlays
 
-COMING SOON
-
+The Electron application opens a websocket server on port 8080, and outputs to every connected websocket each relevant event for the champion selection as well as the configs, which are set in the config.json or the web form.
+For more detailed information have a look at the complete [customization guide](./Customize.md)
 
 # Legal disclaimer
 
