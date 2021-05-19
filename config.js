@@ -39,6 +39,7 @@ var blueTeamName = document.getElementById("blue_team_name")
 var blueTeamSubtext = document.getElementById("blue_team_subtext")
 var redTeamName = document.getElementById("red_team_name")
 var redTeamSubtext = document.getElementById("red_team_subtext")
+var pickingText = document.getElementById("picking_text")
 
 blueColorInput.addEventListener("change", (ev) =>{
   blueColorHex.innerHTML = "("+ev.target.value+")"
@@ -102,6 +103,12 @@ ipc.on("newConfig", (event,newConfig) =>{
 	redTextColorInput.setAttribute("value", config.redTextColor)
 	phaseTextColorInput.setAttribute("value", config.phaseTextColor)
 
+	blueTeamName.setAttribute("value", config.blueTeamName)
+	blueTeamSubtext.setAttribute("value", config.blueTeamSubtext)
+	redTeamName.setAttribute("value", config.redTeamName)
+	redTeamSubText.setAttribute("value", config.redTeamSubText)
+	pickingText.setAttribute("value", config.pickingText)
+
 	blueColorHex.innerHTML= "("+config.blueColor+")"
 	redColorHex.innerHTML= "("+config.redColor+")"
 	timerColorHex.innerHTML= "("+config.timerColor+")"
@@ -142,6 +149,7 @@ updateButton.addEventListener("click",function (){
 		blueTeamName: blueTeamName.value,
 		blueTeamSubtext: blueTeamSubtext.value,
 		redTeamName: redTeamName.value,
-		redTeamSubText: redTeamSubtext.value
+		redTeamSubText: redTeamSubtext.value,
+		pickingText: pickingText.value
 	})
 })
