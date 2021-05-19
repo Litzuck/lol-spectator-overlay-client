@@ -12,6 +12,7 @@ export default class Pick extends React.Component {
 		summonerName: "test",
 		picking: false,
 		isCompleted: false,
+		pickingText: "Picking"
 	}
 	render() {
 
@@ -32,7 +33,7 @@ export default class Pick extends React.Component {
 			})}>
 			<div className="summoner-object-wrapper">
 				{background}
-				<div className="action-text">Picking</div>
+				<div className="action-text">{this.props.pickingText}</div>
 				<div className="summoner-name">{this.props.summonerName}</div>
 				<div className="spells">
 					<Spell spellId={this.props.spellId1} />

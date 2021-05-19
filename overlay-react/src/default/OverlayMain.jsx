@@ -52,6 +52,7 @@ export default class Overlay extends React.Component {
 			blueTeamSubtext: "",
 			redTeamName: "",
 			redTeamSubText: "",
+			pickingText:"Picking"
 		}
 	}
 
@@ -110,12 +111,12 @@ export default class Overlay extends React.Component {
 		if (this.state.bluePicks) {
 			if (this.config.enableCustomNames) {
 				bluePicks = this.state.bluePicks.map((pick, index) => (
-					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index]} />
+					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index]} pickingText={this.config.pickingText} />
 				));
 			}
 			else {
 				bluePicks = this.state.bluePicks.map((pick, index) => (
-					<Pick key={"pick-" + index} {...pick} />
+					<Pick key={"pick-" + index} {...pick} pickingText={this.config.pickingText}/>
 				));
 			}
 		}
@@ -123,12 +124,12 @@ export default class Overlay extends React.Component {
 		if (this.state.redPicks) {
 			if (this.config.enableCustomNames) {
 				redPicks = this.state.redPicks.map((pick, index) => (
-					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index + 5]} />
+					<Pick key={"pick-" + index} {...pick} summonerName={this.config.names[index + 5]} pickingText={this.config.pickingText}/>
 				));
 			}
 			else {
 				redPicks = this.state.redPicks.map((pick, index) => (
-					<Pick key={"pick-" + index} {...pick} />
+					<Pick key={"pick-" + index} {...pick} pickingText={this.config.pickingText}/>
 				));
 			}
 		}
