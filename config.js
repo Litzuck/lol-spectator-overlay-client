@@ -3,10 +3,7 @@ const ipc = electron.ipcRenderer
 const request = require("request")
 const fs = require("fs")
 
-
 var logDir = "./logs"
-
-
 
 document.getElementById("startBtn").addEventListener("click", () => {
     ipc.send("create-overlay-window", null)
@@ -21,13 +18,9 @@ ipc.on('overlay-stopped', (event,args) => {
     document.getElementById("stopOverlayBtn").disabled=true;
 })
 
-
 if (!fs.existsSync(logDir)){
   fs.mkdirSync(logDir, {recursive:true});
 }
-
-
-
 
 var blueColorInput = document.getElementById("blue_selected_color");
 var redColorInput = document.getElementById("red_selected_color");
@@ -42,6 +35,10 @@ var timerColorHex = document.getElementById("timer_color_hex")
 var blueTextColorHex = document.getElementById("blue_text_color_hex")
 var redTextColorHex = document.getElementById("red_text_color_hex")
 var phaseTextColorHex = document.getElementById("phase_text_color_hex")
+var blueTeamName = document.getElementById("blue_team_name")
+var blueTeamSubtext = document.getElementById("blue_team_subtext")
+var redTeamName = document.getElementById("red_team_name")
+var redTeamSubtext = document.getElementById("red_team_subtext")
 
 blueColorInput.addEventListener("change", (ev) =>{
   blueColorHex.innerHTML = "("+ev.target.value+")"
@@ -141,6 +138,10 @@ updateButton.addEventListener("click",function (){
 			summonerNameInput8.value,
 			summonerNameInput9.value,
 			summonerNameInput10.value,
-		]
+		],
+		blueTeamName: blueTeamName.value,
+		blueTeamSubtext: blueTeamSubtext.value,
+		redTeamName: redTeamName.value,
+		redTeamSubText: redTeamSubtext.value
 	})
 })

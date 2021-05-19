@@ -1,69 +1,98 @@
 <html>
-    <head>
-        <title>Config Window</title>
-        <link rel="stylesheet" type="text/css" href="./config.css" />
-    </head>
 
-    <body>
-        <div class="box"><div class="row header">
-        <!-- <button id="updateBtn">Update Champion Images</button> -->
-        <button id="startBtn">Start Overlay</button>
-        <!-- <button id="fetchSummonersBtn">Fetch Summoner Names</button> -->
-        <!-- <button id="loadReplayBtn">Load Replay</button> -->
-        <button id="stopOverlayBtn" disabled>Stop Overlay</button>
-        <!-- <button id="startWebSource" >Start Web Source</button> -->
-    </div>
+<head>
+	<title>Config Window</title>
+	<link rel="stylesheet" type="text/css" href="./config.css" />
+</head>
 
-    <label for="blue_selected_color">Blue Side color: </label>
-			<input type="color"id="blue_selected_color">
-			<span id="blue_color_hex">(#000000)</span>
-			<br>
-			<label for="red_selected_color">Red Side color: </label>
-			<input type="color"id="red_selected_color">
-			<span id="red_color_hex">(#000000)</span>
-			<br>
-			<label for="timer_text_selected_color">Timer text color: </label>
-			<input type="color"id="timer_text_selected_color">
-			<span id="timer_color_hex">(#000000)</span>
-			<br>
-			<label for="blue_text_selected_color">Blue text color: </label>
-			<input type="color"id="blue_text_selected_color">
-			<span id="blue_text_color_hex">(#000000)</span>
-			<br>
-			<label for="red_text_selected_color">Red text color: </label>
-			<input type="color"id="red_text_selected_color">
-			<span id="red_text_color_hex">(#000000)</span>
-			<br>
-			<label for="phase_text_selected_color">Phase text color: </label>
-			<input type="color"id="phase_text_selected_color">
-			<span id="phase_text_color_hex">(#000000)</span>
-			<br>
+<body>
+	<div class="box">
+		<div class="row header">
+			<button id="startBtn">Start Overlay</button>
+			<button id="stopOverlayBtn" disabled>Stop Overlay</button>
+		</div>
 
-			<label for="enable_custom_names">Enabel Custom Summoner Names</label>
-			<input type="checkbox" id="enable_custom_names">
-
-			<button type="button" id="swap">Swap Names</button>
-			<div class="container">
-				<div class="containerSub">
-					<input id="summonerName1" value="Summoner 1"><br>
-					<input id="summonerName2" value="Summoner 2"><br>
-					<input id="summonerName3" value="Summoner 3"><br>
-					<input id="summonerName4" value="Summoner 4"><br>
-					<input id="summonerName5" value="Summoner 5">
-				</div>
-				<div class="containerSub">
-					<input id="summonerName6" value="Summoner 6"><br>
-					<input id="summonerName7" value="Summoner 7"><br>
-					<input id="summonerName8" value="Summoner 8"><br>
-					<input id="summonerName9" value="Summoner 9"><br>
-					<input id="summonerName10" value="Summoner 10">
-				</div>
+		<div>
+			<div class="color-container">
+				<span>
+					<label for="blue_selected_color">Blue Side color: </label>
+					<input type="color" id="blue_selected_color">
+					<span id="blue_color_hex">(#000000)</span>
+				</span>
+				<span>
+					<label for="red_selected_color">Red Side color: </label>
+					<input type="color" id="red_selected_color">
+					<span id="red_color_hex">(#000000)</span>
+				</span>
 			</div>
+				<div class="color-container">
+				<span>
+					<label for="timer_text_selected_color">Timer text color: </label>
+					<input type="color" id="timer_text_selected_color">
+					<span id="timer_color_hex">(#000000)</span>
+				</span>
+				<span>
+					<label for="blue_text_selected_color">Blue text color: </label>
+					<input type="color" id="blue_text_selected_color">
+					<span id="blue_text_color_hex">(#000000)</span>
+				</span>
+				<span>
+					<label for="red_text_selected_color">Red text color: </label>
+					<input type="color" id="red_text_selected_color">
+					<span id="red_text_color_hex">(#000000)</span>
+				</span>
+				<span>
+					<label for="phase_text_selected_color">Phase text color: </label>
+					<input type="color" id="phase_text_selected_color">
+					<span id="phase_text_color_hex">(#000000)</span>
+				</span>
+			</div>
+		</div>
+		<div class="text-container">
+			<span>
+			<label for="blue_team_name">Blue team name: </label>
+			<input type="text" id="blue_team_name">
+		</span>
+		<span>
+			<label for="blue_team_subtext">Blue team subtext: </label>
+			<input type="text" id="blue_team_subtext">
+		</span>
+		<span>
+			<label for="red_team_name">Red team name: </label>
+			<input type="text" id="red_team_name">
+		</span>
+		<span>
+			<label for="red_team_subtext">Red team subtext: </label>
+			<input type="text" id="red_team_subtext">
+		</span>
+		</div>
 
-			<button type="button" id="update">Update</button>
-        <div id="my_console" class="row content "style="background-color: gray"></div>
+		<label for="enable_custom_names">Enabel Custom Summoner Names</label>
+		<input type="checkbox" id="enable_custom_names">
 
-    </div>
-        <script type="text/javascript" src="./config.js"></script>
-    </body>
+		<button type="button" id="swap">Swap Names</button>
+		<div class="container">
+			<div class="containerSub">
+				<input id="summonerName1" value="Summoner 1"><br>
+				<input id="summonerName2" value="Summoner 2"><br>
+				<input id="summonerName3" value="Summoner 3"><br>
+				<input id="summonerName4" value="Summoner 4"><br>
+				<input id="summonerName5" value="Summoner 5">
+			</div>
+			<div class="containerSub">
+				<input id="summonerName6" value="Summoner 6"><br>
+				<input id="summonerName7" value="Summoner 7"><br>
+				<input id="summonerName8" value="Summoner 8"><br>
+				<input id="summonerName9" value="Summoner 9"><br>
+				<input id="summonerName10" value="Summoner 10">
+			</div>
+		</div>
+
+		<button type="button" id="update">Update</button>
+		<div id="my_console" class="row content " style="background-color: gray"></div>
+
+	</div>
+	<script type="text/javascript" src="./config.js"></script>
+</body>
+
 </html>
