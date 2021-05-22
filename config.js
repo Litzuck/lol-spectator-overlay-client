@@ -18,6 +18,20 @@ ipc.on('overlay-stopped', (event,args) => {
     document.getElementById("stopOverlayBtn").disabled=true;
 })
 
+document.getElementById("loadReplayBtn").addEventListener("click", () => {
+
+	ipc.invoke('load-replay-dialog').then(result => {
+		console.log(result)
+        if (result.length == 1) {
+            
+            ipc.send("load-replay", result[0]);
+            document.getElementById("stopOverlayBtn").disabled=false;
+        } else {
+          console.log("No file selected.")
+        }
+      })
+})
+
 if (!fs.existsSync(logDir)){
   fs.mkdirSync(logDir, {recursive:true});
 }
