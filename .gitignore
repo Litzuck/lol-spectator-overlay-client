@@ -4,3 +4,5 @@ node_modules
 images/splash-art/
 out/
 .vscode/
+build
+dist
