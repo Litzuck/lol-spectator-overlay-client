@@ -1,4 +1,4 @@
-import {app, BrowserWindow, ipcMain} from 'electron';
+import {app, BrowserWindow, dialog, ipcMain} from 'electron';
 import * as path from "path";
 import WebSocket from "ws";
 import {ChampSelectStateApi} from "lol-esports-spectate";
@@ -6,8 +6,12 @@ import { State } from "lol-esports-spectate/dist/Interfaces";
 import EventEmitter from "events"
 import mergePatch from "json8-merge-patch"
 import * as fs from "fs"
+import ReplacableStateApi from './ReplacableStateApi';
 
 const REPLAY= false
+
+
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -92,6 +96,7 @@ function createConfigWindow(){
         },
         frame: true,
     })
+
     // and load the index.html of the app.
     // winConf.loadFile('config.html')
     winConf.loadFile(path.join(__dirname,'../config.html'));
@@ -137,6 +142,7 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('create-overlay-window', function (event, arg) {
+    api.connectToClient();
     if(win==null)
         createWindow();
     else
@@ -150,6 +156,7 @@ ipcMain.on("load-replay", (event,path) => {
     if(win!=null)
         win.close()
     
+    api.loadReplay(path)
     createReplayWindow(path);
 })
 
@@ -159,15 +166,31 @@ ipcMain.on("stop-overlay", (event,path) => {
 })
 
 
+ipcMain.handle('load-replay-dialog', async (event) => {
+    console.log("test")
+    const result = dialog.showOpenDialogSync({
+        properties: ['openFile']
+      })
+    return result
+  })
+
+
 var webSocketServer = new WebSocket.Server({ port: 8080 })
 
-var api = new ChampSelectStateApi(REPLAY, "./overlay-react/src/assets/replay_full.json");
+// var api = new ChampSelectStateApi(REPLAY, "./overlay-react/src/assets/replay_full.json");
+var api = new ReplacableStateApi();
+api.connectToClient();
 
 
 var currentState = null;
 var currentPickOrder = null;
 var currentChampionSelectEnded = false;
 var currentChampionSelectStarted = false;
+
+api.on('newState', (state:State)=> currentState = state);
+api.on('newPickOrder', (state:State)=> currentPickOrder = state);
+api.on('championSelectStarted', () => {currentChampionSelectStarted =true; currentChampionSelectEnded=false; })
+api.on('championSelectEnd', () => {currentChampionSelectEnded =true; currentChampionSelectStarted =false;})
 
 var config = {};
 fs.readFile(path.join(__dirname,"..","config.json"), { encoding: "utf8" }, (err, data) => {
