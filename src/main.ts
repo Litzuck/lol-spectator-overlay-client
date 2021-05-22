@@ -7,11 +7,13 @@ import EventEmitter from "events"
 import mergePatch from "json8-merge-patch"
 import * as fs from "fs"
 import ReplacableStateApi from './ReplacableStateApi';
+import express from "express"
 
 const REPLAY= false
 
 
-
+var server;
+var serverSocket;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -171,8 +173,37 @@ ipcMain.handle('load-replay-dialog', async (event) => {
     const result = dialog.showOpenDialogSync({
         properties: ['openFile']
       })
-    return result
+
+    api.loadReplay(result[0])
+    return result[0]
   })
+
+ipcMain.handle("connect-to-client", async (event) =>{
+    api.connectToClient();
+    return true;
+})
+
+
+ipcMain.handle('start-web-server', async (event) => {
+    server = express();
+
+    server.use(express.static(path.join(__dirname,"..", "build")));
+    server.get('*', function(req,res) {
+        res.sendFile(path.join(__dirname,"..", "build", "index.html"))
+    })
+
+    serverSocket = server.listen(8000, ()=>{
+        console.log("server started om port 8000")
+    })
+
+    return "success"
+})
+
+ipcMain.handle('stop-web-server', async (event) => {
+    serverSocket.close();
+
+    return "success"
+})
 
 
 var webSocketServer = new WebSocket.Server({ port: 8080 })
