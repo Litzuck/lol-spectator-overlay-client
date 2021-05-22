@@ -52,7 +52,8 @@ export default class Overlay extends React.Component {
 			blueTeamSubtext: "",
 			redTeamName: "",
 			redTeamSubText: "",
-			pickingText:"Picking"
+			pickingText:"Picking",
+			enableTransparent:false,
 		}
 	}
 
@@ -157,7 +158,7 @@ export default class Overlay extends React.Component {
 			<div
 				className="overlay"
 				style={style} //{{ width: 1280, height: 720 ,zoom:1.25 }}
-				className={cx("overlay", this.state.actingSide + "-acting")}
+				className={cx("overlay", this.state.actingSide + "-acting", {"transparent": this.config.enableTransparent})}
 			>
 				<div className="champion-select-header">
 					<div className="blue-team-info">

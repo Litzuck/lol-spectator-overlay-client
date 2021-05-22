@@ -1,11 +1,11 @@
-/* .overlay{
+.overlay.transparent{
 	background: rgba(0, 0 ,0, 0);
 }
 
-.champion-select-header, .champion-select-header::before, .header-keystone, .left-bg-section, .right-bg-section, .header-keystone-inner{
+.transparent .champion-select-header, .transparent .champion-select-header::before, .transparent .header-keystone,.transparent .left-bg-section, .transparent .right-bg-section, .transparent .header-keystone-inner{
 	background: rgba(0, 0 ,0, 0);
 }
 
-.champion-select-header .header-keystone, .champion-select-header .header-keystone> .left-bg-section, .champion-select-header .header-keystone> .right-bg-section{
+.transparent .champion-select-header .header-keystone, .transparent .champion-select-header .header-keystone> .left-bg-section, .transparent .champion-select-header .header-keystone> .right-bg-section{
 	background: rgba(0, 0 ,0, 0);
-} */
+}
