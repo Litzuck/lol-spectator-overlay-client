@@ -11,6 +11,9 @@
 			<button id="startBtn">Start Overlay</button>
 			<button id="stopOverlayBtn" disabled>Stop Overlay</button>
 			<button id="loadReplayBtn">Load Replay</button>
+			<button id="connectToClientBtn" disabled>Connect to client</button>
+			<button id="startWebServer">Start Web Server</button>
+			<button id="stopWebServer" disabled>Stop Web Server</button>
 		</div>
 
 		<div>
@@ -72,6 +75,9 @@
 		</span>
 		</div>
 
+		<label for="enable_transparent">Enable Transparent Background</label>
+		<input type="checkbox" id="enable_transparent">
+
 		<label for="enable_custom_names">Enable Custom Summoner Names</label>
 		<input type="checkbox" id="enable_custom_names">
 
@@ -94,7 +100,8 @@
 		</div>
 
 		<button type="button" id="update">Update</button>
-		<div id="my_console" class="row content " style="background-color: gray"></div>
+		<div id="my_console" class="row content " style="background-color: gray; white-space: pre-wrap;"></div>
+
 
 	</div>
 	<script type="text/javascript" src="./config.js"></script>

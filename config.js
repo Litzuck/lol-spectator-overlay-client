@@ -5,6 +5,20 @@ const fs = require("fs")
 
 var logDir = "./logs"
 
+
+var startBtn =  document.getElementById("startBtn")
+var stopBtn = document.getElementById("stopOverlayBtn")
+var loadReplayBtn = document.getElementById("loadReplayBtn")
+var connectToClientBtn = document.getElementById('connectToClientBtn')
+var startWebServer = document.getElementById("startWebServer")
+var stopWebServer = document.getElementById("stopWebServer")
+
+var consoleDiv = document.getElementById("my_console")
+
+function log(...args){
+	args.forEach(arg => consoleDiv.innerHTML+= arg+"\n")
+}
+
 document.getElementById("startBtn").addEventListener("click", () => {
     ipc.send("create-overlay-window", null)
     document.getElementById("stopOverlayBtn").disabled=false;
@@ -22,14 +36,35 @@ document.getElementById("loadReplayBtn").addEventListener("click", () => {
 
 	ipc.invoke('load-replay-dialog').then(result => {
 		console.log(result)
-        if (result.length == 1) {
-            
-            ipc.send("load-replay", result[0]);
-            document.getElementById("stopOverlayBtn").disabled=false;
-        } else {
-          console.log("No file selected.")
-        }
+        log("Replay loaded from "+ result)
       })
+
+	document.getElementById('connectToClientBtn').disabled = false;
+})
+
+document.getElementById('connectToClientBtn').addEventListener('click', () => {
+	ipc.invoke("connect-to-client").then(res => {
+		log("Connected to client.")
+	})
+
+	document.getElementById('connectToClientBtn').disabled = true;
+})
+
+document.getElementById('startWebServer').addEventListener('click', () => {
+	ipc.invoke('start-web-server').then(result => {
+		console.log(result);
+		log("Web Server started at http://localhost:8000")
+		document.getElementById('startWebServer').disabled = true;
+		document.getElementById('stopWebServer').disabled = false;
+	})
+})
+
+document.getElementById('stopWebServer').addEventListener('click', ()=>{
+	ipc.invoke('stop-web-server').then(result => {
+		log("Web Server stopped.")
+		document.getElementById('startWebServer').disabled = false;
+		document.getElementById('stopWebServer').disabled = true;
+	})
 })
 
 if (!fs.existsSync(logDir)){
@@ -75,6 +110,7 @@ phaseTextColorInput.addEventListener("change", (ev) =>{
 })
 
 var enableCustomNamesInput = document.getElementById("enable_custom_names")
+var enableTransparent = document.getElementById('enable_transparent')
 
 var swapNamesButton = document.getElementById("swap")
 swapNamesButton.addEventListener("click", function (){
@@ -120,8 +156,12 @@ ipc.on("newConfig", (event,newConfig) =>{
 	blueTeamName.setAttribute("value", config.blueTeamName)
 	blueTeamSubtext.setAttribute("value", config.blueTeamSubtext)
 	redTeamName.setAttribute("value", config.redTeamName)
-	redTeamSubText.setAttribute("value", config.redTeamSubText)
+	redTeamSubtext.setAttribute("value", config.redTeamSubText)
 	pickingText.setAttribute("value", config.pickingText)
+
+	enableCustomNamesInput.setAttribute("checked", config.enableCustomNames)
+	enableTransparent.setAttribute("checked", config.enableTransparent)
+
 
 	blueColorHex.innerHTML= "("+config.blueColor+")"
 	redColorHex.innerHTML= "("+config.redColor+")"
@@ -164,6 +204,7 @@ updateButton.addEventListener("click",function (){
 		blueTeamSubtext: blueTeamSubtext.value,
 		redTeamName: redTeamName.value,
 		redTeamSubText: redTeamSubtext.value,
-		pickingText: pickingText.value
+		pickingText: pickingText.value,
+		enableTransparent: enableTransparent.checked
 	})
 })
