@@ -59,7 +59,7 @@ export default class Overlay extends React.Component {
 
 
 	componentDidMount() {
-		let ws = new ReconnectingWebSocket("ws://localhost:8080")
+		let ws = new ReconnectingWebSocket(this.props.backend)
 		var endTimeout = null;
 		let _this = this
 		ws.onopen = function (ev) {
