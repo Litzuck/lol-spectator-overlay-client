@@ -13,11 +13,12 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "reconnecting-websocket": "^4.4.0",
+    "requestretry": "^6.0.0",
     "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set \"BUILD_PATH=../build\" && react-scripts build",
+    "build": "set \"BUILD_PATH=../build\"&& pre_build.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
