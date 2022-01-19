@@ -18,7 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set \"BUILD_PATH=../build\"&& pre_build.js && react-scripts build",
+    "build": "set \"BUILD_PATH=../build\" && react-scripts build",
+    "build2": "set \"BUILD_PATH=../build\"&& pre_build.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

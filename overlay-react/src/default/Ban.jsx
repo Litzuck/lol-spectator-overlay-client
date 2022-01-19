@@ -12,7 +12,7 @@ export default class Ban extends React.Component {
 		if (this.props.championId === 0)
 			ban = <div className="ban" ></div>
 		else if (this.props.championId > 0) {
-			ban = <div className="ban" style={{ backgroundImage: `url(${require("../assets/splash-art/centered/" + this.props.championId + ".jpg").default})` }} data-id={this.props.championId}></div>
+			ban = <div className="ban" style={{ backgroundImage: `url(${"images/champions/splash-art/" + this.props.championId + ".png"})` }} data-id={this.props.championId}></div>
 		}
 		else {
 			ban = <div className="ban" ></div>

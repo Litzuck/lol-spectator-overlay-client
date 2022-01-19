@@ -1,17 +1,20 @@
-import {app, BrowserWindow, dialog, ipcMain} from 'electron';
+import {app, BrowserWindow, dialog, ipcMain, shell} from 'electron';
 import * as path from "path";
 import WebSocket from "ws";
-import {ChampSelectStateApi} from "lol-esports-spectate";
 import { State } from "lol-esports-spectate/dist/Interfaces";
 import EventEmitter from "events"
 import mergePatch from "json8-merge-patch"
 import * as fs from "fs"
 import ReplacableStateApi from './ReplacableStateApi';
 import express from "express"
+import { checkForNewChampionImages } from './downloadImages';
+import MyWebSocketServer from './WebSocketServer';
 
 const REPLAY= false
 
 
+const WEBSERVER_PORT = 36501
+const WEBSOCKET_SERVER_PORT = 36502
 var server;
 var serverSocket;
 
@@ -121,7 +124,26 @@ function createConfigWindow(){
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createConfigWindow)
+
+app.on('ready', () => {
+    createConfigWindow();
+    const firstTimeFilePath = path.resolve(app.getPath('userData'), '.first-time-huh');
+    let isFirstTime;
+    try {
+      fs.closeSync(fs.openSync(firstTimeFilePath, 'wx'));
+      isFirstTime = true;
+    } catch(e) {
+      if (e.code === 'EEXIST') {
+        isFirstTime = false;
+      } else {
+        // something gone wrong
+        throw e;
+      }
+    }
+    if (isFirstTime) {
+        checkForNewChampionImages();
+    }
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -144,6 +166,7 @@ app.on('activate', () => {
 // code. You can also put them in separate files and require them here.
 
 ipcMain.on('create-overlay-window', function (event, arg) {
+    // shell.openExternal("https://google.com")
     api.connectToClient();
     if(win==null)
         createWindow();
@@ -152,6 +175,10 @@ ipcMain.on('create-overlay-window', function (event, arg) {
   })
 ipcMain.on("fetch-summoner-names", function(event,args) {
     win.webContents.send("fetch-summoner-names-client", null)
+})
+
+ipcMain.on("open-overlay", function (event, arg) {
+    shell.openExternal("http://localhost:" + WEBSERVER_PORT)
 })
 
 ipcMain.on("load-replay", (event,path) => {
@@ -205,23 +232,30 @@ ipcMain.handle('stop-web-server', async (event) => {
     return "success"
 })
 
+server = express();
 
-var webSocketServer = new WebSocket.Server({ port: 8080 })
-
-// var api = new ChampSelectStateApi(REPLAY, "./overlay-react/src/assets/replay_full.json");
-var api = new ReplacableStateApi();
-api.connectToClient();
+server.use(express.static(path.join(__dirname,"..", "build")));
 
 
-var currentState = null;
-var currentPickOrder = null;
-var currentChampionSelectEnded = false;
-var currentChampionSelectStarted = false;
+server.get('/images/*', function(req,res) {
+    res.sendFile(path.join(app.getPath('userData'), "images", req.params[0]))
+})
 
-api.on('newState', (state:State)=> currentState = state);
-api.on('newPickOrder', (state:State)=> currentPickOrder = state);
-api.on('championSelectStarted', () => {currentChampionSelectStarted =true; currentChampionSelectEnded=false; })
-api.on('championSelectEnd', () => {currentChampionSelectEnded =true; currentChampionSelectStarted =false;})
+server.get('*', function(req,res) {
+    res.sendFile(path.join(__dirname,"..", "build", "index.html"))
+})
+
+serverSocket = server.listen(WEBSERVER_PORT, ()=>{
+    console.log("server started om port "+WEBSERVER_PORT)
+})
+
+
+var webSocketServer = new MyWebSocketServer( WEBSOCKET_SERVER_PORT , 'localhost');
+
+webSocketServer.start();
+
+var api = webSocketServer.getStateApi();
+
 
 var config = {};
 fs.readFile(path.join(__dirname,"..","config.json"), { encoding: "utf8" }, (err, data) => {
@@ -244,50 +278,29 @@ ipcMain.on("newConfig", (event,newConfig)=>{
     configEventEmitter.emit("newConfig", config)
 });
 
-webSocketServer.on("connection", function connection(ws) {
-	console.log("new connection opened")
-
-	if (currentChampionSelectStarted)
-		ws.send(JSON.stringify({ "event": "championSelectStarted" }))
-	if (currentState != null)
-		ws.send(JSON.stringify({ "event": "newState", "data": currentState }));
-	if (currentPickOrder != null)
-		ws.send(JSON.stringify({ "event": "newPickOrder", "data": currentPickOrder }))
-	if (currentChampionSelectEnded)
-		ws.send(JSON.stringify({ "event": "championSelectEnded" }))
-
-	ws.send(JSON.stringify({ "event": "newConfig", "data": config }))
-
-	const newState = (state: State) => {
-		ws.send(JSON.stringify({ "event": "newState", "data": state }))
-		// console.log("Event newState")
-	};
-
-	const championSelectStarted = () => {
-		ws.send(JSON.stringify({ "event": "championSelectStarted" }))
-		// console.log("championSelectStarted")
-	};
-
-	const championSelectEnded = () => {
-		ws.send(JSON.stringify({ "event": "championSelectEnded" }))
-		// console.log("championSelectEnded")
-	};
-
-	const newPickOrder = (state: State) => {
-		ws.send(JSON.stringify({ "event": "newPickOrder", "data": state }))
-		// console.log("newPickOrder")
-	}
-
-	configEventEmitter.addListener("newConfig", (config) => {
-		ws.send(JSON.stringify({ "event": "newConfig", "data": config }))
-	})
-
-	api.addListener("newState", newState);
-	api.addListener("championSelectStarted", championSelectStarted);
-	api.addListener("championSelectEnd", championSelectEnded);
-	api.addListener("newPickOrder", newPickOrder);
+configEventEmitter.addListener("newConfig", (config) => {
+    webSocketServer.sendToAllClients(JSON.stringify({ "event": "newConfig", "data": config }))
 })
+
 
 ipcMain.on("getConfig", () =>{
     winConf.webContents.send("newConfig", config)
 })
+
+
+ipcMain.handle('update-images', () =>{
+    console.log("update images")
+    checkForNewChampionImages();
+});
+
+
+setInterval(()=>{
+    var serverStatus ={
+        webSocketServer: webSocketServer.getRunningStatus(),
+        webServer: serverSocket != null ? "Running" : "Stopped",
+        leagueClient: api.getConnectionStatus()
+    }
+
+    winConf.webContents.send("serverStatus", serverStatus)
+}, 5000)
+

@@ -51,3 +51,32 @@ body {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+
+.status{
+  --online-color: greenyellow;
+  --offline-color: red;
+  height: 200px;
+  font-size: x-large;
+  font-weight: bold;
+  text-align: center;
+  line-height: 200px;
+}
+#statusClient {
+  background-color: greenyellow;
+}
+
+#statusServer {
+  background-color: red;
+}
+
+#statusWebSocketServer{
+  background-color: greenyellow;
+}
+
+
+
+.col{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

@@ -1,9 +1,8 @@
 const electron = require("electron")
 const ipc = electron.ipcRenderer
 const request = require("request")
-const fs = require("fs")
 
-var logDir = "./logs"
+// var logDir = "./logs"
 
 
 var startBtn =  document.getElementById("startBtn")
@@ -12,6 +11,7 @@ var loadReplayBtn = document.getElementById("loadReplayBtn")
 var connectToClientBtn = document.getElementById('connectToClientBtn')
 var startWebServer = document.getElementById("startWebServer")
 var stopWebServer = document.getElementById("stopWebServer")
+var updateImages = document.getElementById("updateImages")
 
 var consoleDiv = document.getElementById("my_console")
 
@@ -20,13 +20,14 @@ function log(...args){
 }
 
 document.getElementById("startBtn").addEventListener("click", () => {
-    ipc.send("create-overlay-window", null)
+    // ipc.send("create-overlay-window", null)
+	ipc.send("open-overlay",null)
     document.getElementById("stopOverlayBtn").disabled=false;
 })
 
-document.getElementById("stopOverlayBtn").addEventListener("click", () => {
-    ipc.send("stop-overlay",null)
-})
+// document.getElementById("stopOverlayBtn").addEventListener("click", () => {
+//     ipc.send("stop-overlay",null)
+// })
 
 ipc.on('overlay-stopped', (event,args) => {
     document.getElementById("stopOverlayBtn").disabled=true;
@@ -50,26 +51,32 @@ document.getElementById('connectToClientBtn').addEventListener('click', () => {
 	document.getElementById('connectToClientBtn').disabled = true;
 })
 
-document.getElementById('startWebServer').addEventListener('click', () => {
-	ipc.invoke('start-web-server').then(result => {
-		console.log(result);
-		log("Web Server started at http://localhost:8000")
-		document.getElementById('startWebServer').disabled = true;
-		document.getElementById('stopWebServer').disabled = false;
+// document.getElementById('startWebServer').addEventListener('click', () => {
+// 	ipc.invoke('start-web-server').then(result => {
+// 		console.log(result);
+// 		log("Web Server started at http://localhost:8000")
+// 		document.getElementById('startWebServer').disabled = true;
+// 		document.getElementById('stopWebServer').disabled = false;
+// 	})
+// })
+
+// document.getElementById('stopWebServer').addEventListener('click', ()=>{
+// 	ipc.invoke('stop-web-server').then(result => {
+// 		log("Web Server stopped.")
+// 		document.getElementById('startWebServer').disabled = false;
+// 		document.getElementById('stopWebServer').disabled = true;
+// 	})
+// })
+
+updateImages.addEventListener('click', () => {
+	ipc.invoke('update-images').then(result => {
+		log("Images updated.")
 	})
 })
 
-document.getElementById('stopWebServer').addEventListener('click', ()=>{
-	ipc.invoke('stop-web-server').then(result => {
-		log("Web Server stopped.")
-		document.getElementById('startWebServer').disabled = false;
-		document.getElementById('stopWebServer').disabled = true;
-	})
-})
-
-if (!fs.existsSync(logDir)){
-  fs.mkdirSync(logDir, {recursive:true});
-}
+// if (!fs.existsSync(logDir)){
+//   fs.mkdirSync(logDir, {recursive:true});
+// }
 
 var blueColorInput = document.getElementById("blue_selected_color");
 var redColorInput = document.getElementById("red_selected_color");
@@ -207,4 +214,20 @@ updateButton.addEventListener("click",function (){
 		pickingText: pickingText.value,
 		enableTransparent: enableTransparent.checked
 	})
+})
+
+
+var statusWebServer = document.getElementById("statusWebServer")
+var statusWebSocketServer = document.getElementById("statusWebSocketServer")
+var statusClient = document.getElementById("statusClient")
+
+
+ipc.on("serverStatus", (event,status) =>{
+	  statusWebServer.innerHTML = "Web Server: "+ status.webServer
+  	  statusWebSocketServer.innerHTML = "Web Socket Server: "+ status.webSocketServer
+ 	  statusClient.innerHTML = "Client: "+status.leagueClient
+
+	statusWebServer.style.backgroundColor = status.webServer =="Running" ? "var(--online-color)" : "var(--offline-color)"
+	statusWebSocketServer.style.backgroundColor = status.webSocketServer =="Running" ? "var(--online-color)" : "var(--offline-color)"
+	statusClient.style.backgroundColor = status.leagueClient == "Connected" ? "var(--online-color)" : "var(--offline-color)"
 })

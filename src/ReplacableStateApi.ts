@@ -16,6 +16,7 @@ export default class ReplacableStateApi extends EventEmitter{
     connectToClient(){
         if(this.stateApi){
             this.stateApi.removeAllListeners();
+            this.stateApi.stop();
             if(this.stateApi.replay){
                 if(this.clientStateApi)
                     this.stateApi = this.clientStateApi;
@@ -66,4 +67,7 @@ export default class ReplacableStateApi extends EventEmitter{
         this.emit('newState', state);
     }
 
+    getConnectionStatus(){
+        return this.stateApi.getConnectionStatus();
+    }
 }

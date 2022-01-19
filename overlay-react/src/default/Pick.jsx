@@ -17,8 +17,8 @@ export default class Pick extends React.Component {
 	render() {
 
 		let background
-		if (this.props.championId > 0) {
-			background = <div className="background" style={{ backgroundImage: `url(${require("../assets/splash-art/centered/" + this.props.championId + ".jpg").default})` }} data-id={this.props.championId}></div>
+		if (this.props.championId > 0) {// background = <div className="background" style={{ backgroundImage: `url(${require("../assets/splash-art/centered/" + this.props.championId + ".jpg").default})` }} data-id={this.props.championId}></div>
+			background = <div className="background" style={{ backgroundImage: `url(${"images/champions/splash-art/" + this.props.championId + ".png"})` }} data-id={this.props.championId}></div>
 		}
 		else {
 			background = <div className="background"></div>
