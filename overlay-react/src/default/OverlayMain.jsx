@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import cx from "classnames";
 
 // import css from './style/index.less';
@@ -60,7 +60,7 @@ export default class Overlay extends React.Component {
 
 	componentDidMount() {
 		let ws = new ReconnectingWebSocket(this.props.backend)
-		var endTimeout = null;
+		//var endTimeout = null;
 		let _this = this
 		ws.onopen = function (ev) {
 			// console.log(ev)
@@ -156,7 +156,6 @@ export default class Overlay extends React.Component {
 
 		return (
 			<div
-				className="overlay"
 				style={style} //{{ width: 1280, height: 720 ,zoom:1.25 }}
 				className={cx("overlay", this.state.actingSide + "-acting", {"transparent": this.config.enableTransparent})}
 			>
