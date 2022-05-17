@@ -49,13 +49,13 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "ignore": "(overlay-react|fonts|logs|\\.github|\\.vscode)"
+        "ignore": "(overlay-react|fonts|logs|\\.github|\\.vscode|src)"
       },
       "makers": [
         {
           "name": "@electron-forge/maker-zip",
           "platforms": [
-            "win32"
+            "win32", "linux", "darwin"
           ]
         }
       ]
