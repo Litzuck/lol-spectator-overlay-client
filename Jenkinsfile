@@ -48,6 +48,7 @@ pipeline {
                     name=$(echo "$message" | head -n1)
                     description=$(echo "$message" | tail -n +3)
                     description=$(echo "$description" | sed -z 's/\\n/\\n/g') # Escape line breaks to prevent json parsing problems
+                    sleep 1m
                     # Create a release
                     # release=$(curl -XPOST -H \"Authorization:token $token\" --data \"{\\\"tag_name\\\": \\\"$tag\\\", \\\"target_commitish\\\": \\\"main\\\", \\\"name\\\": \\\"$name\\\", \\\"body\\\": \\\"$description\\\", \\\"draft\\\": true, \\\"prerelease\\\": true}\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases)
                     release=$(curl -XPOST -H \"Authorization:token $token\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/tags/$tag)
