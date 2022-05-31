@@ -30,6 +30,7 @@ pipeline {
         
         stage('Build APP') { 
             steps {
+                sh 'tag=$(git describe --tags | cut -d "v" -f 2) && npm version $tag'
                 sh 'npm ci && npm run make -- --platform win32'
             }
         }
@@ -42,6 +43,7 @@ pipeline {
                     echo "Publishing on Github..."
                     # Get the last tag name
                     tag=$(git describe --tags)
+                    version=$(echo $tag | cut -d "v" -f 2)
                     # Get the full message associated with this tag
                     message="$(git for-each-ref refs/tags/$tag --format='%(contents)')"
                     # Get the title and the description as separated variables
@@ -55,7 +57,7 @@ pipeline {
                     # Extract the id of the release from the creation response
                     id=$(echo "$release" | sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
                     # Upload the artifact
-                    curl -XPOST -H "Authorization:token $token" -H "Content-Type:application/octet-stream" --data-binary @out/make/zip/win32/x64/lol-esports-spectate-client-win32-x64-2.1.0.zip https://uploads.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/$id/assets?name=lol-esports-spectate-client-win32-x64.zip
+                    curl -XPOST -H "Authorization:token $token" -H "Content-Type:application/octet-stream" --data-binary @out/make/zip/win32/x64/lol-esports-spectate-client-win32-x64-$version.zip https://uploads.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/$id/assets?name=lol-esports-spectate-client-win32-x64.zip
                 '''
                 } 
             }
