@@ -30,7 +30,7 @@ pipeline {
         
         stage('Build APP') { 
             steps {
-                sh 'tag=$(git describe --tags | cut -d "v" -f 2 | cut -d "-" -f 1) && npm version $tag'
+                sh 'npm config set git-tag-version false && tag=$(git describe --tags | cut -d "v" -f 2 | cut -d "-" -f 1) && npm version $tag'
                 sh 'npm ci && npm run make -- --platform win32'
             }
         }
