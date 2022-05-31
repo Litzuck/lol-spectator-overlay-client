@@ -49,7 +49,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "ignore": "(overlay-react|fonts|logs|\\.github|\\.vscode|src)"
+        "ignore": "(overlay-react|fonts|logs|\\.github|\\.vscode)"
       },
       "makers": [
         {
