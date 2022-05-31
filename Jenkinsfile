@@ -50,7 +50,7 @@ pipeline {
                     description=$(echo "$description" | sed -z 's/\\n/\\n/g') # Escape line breaks to prevent json parsing problems
                     sleep 1m
                     # Create a release
-                    # release=$(curl -XPOST -H \"Authorization:token $token\" --data \"{\\\"tag_name\\\": \\\"$tag\\\", \\\"target_commitish\\\": \\\"main\\\", \\\"name\\\": \\\"$name\\\", \\\"body\\\": \\\"$description\\\", \\\"draft\\\": true, \\\"prerelease\\\": true}\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases)
+                    # release=$(curl -H \"Authorization:token $token\" --data \"{\\\"tag_name\\\": \\\"$tag\\\", \\\"target_commitish\\\": \\\"main\\\", \\\"name\\\": \\\"$name\\\", \\\"body\\\": \\\"$description\\\", \\\"draft\\\": true, \\\"prerelease\\\": true}\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases)
                     release=$(curl -XPOST -H \"Authorization:token $token\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/tags/$tag)
                     # Extract the id of the release from the creation response
                     id=$(echo "$release" | sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
