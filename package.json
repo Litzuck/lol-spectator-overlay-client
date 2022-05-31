@@ -49,6 +49,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
+        "asar": true,
         "ignore": "(overlay-react|fonts|logs|\\.github|\\.vscode)"
       },
       "makers": [

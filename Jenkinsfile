@@ -57,7 +57,7 @@ pipeline {
                     # Extract the id of the release from the creation response
                     id=$(echo "$release" | sed -n -e 's/"id":\\ \\([0-9]\\+\\),/\\1/p' | head -n 1 | sed 's/[[:blank:]]//g')
                     # Upload the artifact
-                    curl -XPOST -H "Authorization:token $token" -H "Content-Type:application/octet-stream" --data-binary @out/make/zip/win32/x64/lol-esports-spectate-client-win32-x64-$version.zip https://uploads.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/$id/assets?name=lol-esports-spectate-client-win32-x64.zip
+                    curl -XPOST -H "Authorization:token $token" -H "Content-Type:application/octet-stream" --data-binary @out/make/zip/win32/x64/lol-esports-spectate-client-win32-x64-$version.zip https://uploads.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/$id/assets?name=lol-esports-spectate-client-win32-x64-$version.zip
                 '''
                 } 
             }
