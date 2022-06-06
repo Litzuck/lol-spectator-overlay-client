@@ -114,6 +114,11 @@ function deleteCorruptFiles(){
   let basePath = app.getPath('userData') + '/images/champions/';
   // delete all corrupt files in folders splash-art/centered and champion/square
   fs.readdir(basePath+'splash-art', (err, files) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
     files.forEach((file) => {
       if(fs.existsSync(basePath+`splash-art/${file}`) && fs.lstatSync(basePath+`splash-art/${file}`).size === 0){
         fs.unlink(basePath+`splash-art/${file}`, (err) => {
@@ -126,6 +131,10 @@ function deleteCorruptFiles(){
   });
 
   fs.readdir(basePath+'/square', (err, files) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
     files.forEach((file) => {
       if(fs.existsSync(basePath+`/square/${file}`) && fs.lstatSync(basePath+`/square/${file}`).size === 0){
         fs.unlink(basePath+`/square/${file}`, (err) => {
