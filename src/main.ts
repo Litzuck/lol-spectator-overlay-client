@@ -9,7 +9,7 @@ import ReplacableStateApi from './ReplacableStateApi';
 import express from "express"
 import { checkForNewChampionImages } from './downloadImages';
 import MyWebSocketServer from './WebSocketServer';
-
+import serveAsar from "express-serve-asar";
 const REPLAY= false
 
 
@@ -232,9 +232,29 @@ ipcMain.handle('stop-web-server', async (event) => {
     return "success"
 })
 
+const contentBase = path.join(__dirname,"..", "build")
+
+const middleware = serveAsar(contentBase)
+ 
+// const devServerOptions = {
+//   stats: {
+//     colors: true 
+//   },
+//   hot: true,
+//   inline: true,
+//   host,
+//   contentBase,
+//   before (app) {
+//     app.use(middleware)
+//   }
+// }
+
+
 server = express();
 
 server.use(express.static(path.join(__dirname,"..", "build")));
+
+server.use(middleware);
 
 
 server.get('/images/*', function(req,res) {
