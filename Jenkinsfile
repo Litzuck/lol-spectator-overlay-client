@@ -25,6 +25,7 @@ pipeline {
         stage('Build Frontend'){
             steps{
                 sh 'cd overlay-react && npm ci && npm run build'
+                sh 'ls -la'
                 stash includes: 'build/**' , name: 'frontend'
             }
         }
