@@ -26,6 +26,7 @@ pipeline {
             steps{
                 sh 'cd overlay-react && npm ci && npm run build'
                 sh 'ls -la'
+                sh 'ls -la overlay-react'
                 stash includes: 'build/**' , name: 'frontend'
             }
         }
