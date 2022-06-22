@@ -25,11 +25,14 @@ pipeline {
         stage('Build Frontend'){
             steps{
                 sh 'cd overlay-react && npm ci && npm run build'
+                sh 'cp -r overlay-react/build build/'
+                stash includes: 'build/**' , name: 'frontend'
             }
         }
         
         stage('Build APP') { 
             steps {
+                unstash 'frontend'
                 sh 'npm config set git-tag-version false && tag=$(git describe --tags | cut -d "v" -f 2 | cut -d "-" -f 1) && npm version $tag'
                 sh 'npm ci && npm run make -- --platform win32'
             }
@@ -50,7 +53,6 @@ pipeline {
                     name=$(echo "$message" | head -n1)
                     description=$(echo "$message" | tail -n +3)
                     description=$(echo "$description" | sed -z 's/\\n/\\n/g') # Escape line breaks to prevent json parsing problems
-                    sleep 1m
                     # Create a release
                     # release=$(curl -H \"Authorization:token $token\" --data \"{\\\"tag_name\\\": \\\"$tag\\\", \\\"target_commitish\\\": \\\"main\\\", \\\"name\\\": \\\"$name\\\", \\\"body\\\": \\\"$description\\\", \\\"draft\\\": true, \\\"prerelease\\\": true}\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases)
                     release=$(curl -H \"Authorization:token $token\" https://api.github.com/repos/Litzuck/lol-spectator-overlay-client/releases/tags/$tag)
