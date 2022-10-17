@@ -709,6 +709,22 @@ animation: fadeInLeftAnimation 0.2s,
 
 .summoner-object-component .summoner-object-wrapper .background[data-id='887'],
 .summoner-object-component .summoner-object-wrapper .old-background[data-id='887'] {
-   background-size: 320%;
-   background-position-y: 10%;
+   background-size: 300%;
+   background-position-y: 20%;
+}
+
+.summoner-object-component .summoner-object-wrapper .background[data-id='711'],
+.summoner-object-component .summoner-object-wrapper .old-background[data-id='711'] {
+   background-size: 180%;
+}
+
+.summoner-object-component .summoner-object-wrapper .background[data-id='221'],
+.summoner-object-component .summoner-object-wrapper .old-background[data-id='221'] {
+   background-position-y: 25%;
+}
+
+.summoner-object-component .summoner-object-wrapper .background[data-id='888'],
+.summoner-object-component .summoner-object-wrapper .old-background[data-id='888'] {
+   background-size: 200%;
+   background-position-y: 20%;
 }
