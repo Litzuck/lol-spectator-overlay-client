@@ -20,7 +20,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.61",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
-    "electron": "^11.5.0",
+    "electron": "^21.2.0",
     "typescript": "^4.2.3"
   },
   "dependencies": {
@@ -28,15 +28,15 @@
     "@types/request": "^2.48.7",
     "@types/requestretry": "^1.12.8",
     "@types/ws": "^7.4.2",
+    "cacheable-request": "^10.2.2",
     "electron-squirrel-startup": "^1.0.0",
     "express": "^4.17.1",
     "express-serve-asar": "^1.0.2",
     "fastq": "^1.13.0",
     "json8-merge-patch": "^1.0.4",
-    "lcu-connector": "^2.1.3",
-    "lol-esports-spectate": "^2.0.2-beta.27",
+    "lol-esports-spectate": "^3.0.0",
     "request-promise": "^4.2.6",
-    "requestretry": "^6.0.0",
+    "requestretry": "^7.1.0",
     "ws": "^7.5.5"
   },
   "repository": {
