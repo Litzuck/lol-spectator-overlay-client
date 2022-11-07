@@ -1,40 +1,3 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-.box {
-  display: flex;
-  flex-flow: column;
-  height: 100%;
-}
-
-.box .row {
-  border: 1px dotted grey;
-}
-
-.box .row.header {
-  flex: 0 1 auto;
-  /* The above is shorthand for:
-  flex-grow: 0,
-  flex-shrink: 1,
-  flex-basis: auto
-  */
-}
-
-.box .row.content {
-  flex: 1 1 auto;
-}
-
-.box .row.footer {
-  flex: 0 1 40px;
-}
-
-.container{
-	display: flex;
-}
-
 .containerSub{
 	display: block;
 }
@@ -55,22 +18,25 @@ body {
 .status{
   --online-color: greenyellow;
   --offline-color: red;
+  --starting-color: yellow;
   height: 200px;
   font-size: x-large;
   font-weight: bold;
   text-align: center;
   line-height: 200px;
+  margin: 5px;
+  border-radius: 5px;
 }
 #statusClient {
-  background-color: greenyellow;
+  background-color: var(--starting-color);
 }
 
-#statusServer {
-  background-color: red;
+#statusWebServer {
+  background-color: var(--starting-color);
 }
 
 #statusWebSocketServer{
-  background-color: greenyellow;
+  background-color: var(--starting-color);
 }
 
 
@@ -79,4 +45,14 @@ body {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+.container-col{
+  display: flex;
+  flex-direction: column;
+}
+
+.container-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

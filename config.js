@@ -1,8 +1,3 @@
-const electron = require("electron")
-const ipc = electron.ipcRenderer
-const request = require("request")
-
-// var logDir = "./logs"
 
 
 var startBtn =  document.getElementById("startBtn")
@@ -19,64 +14,37 @@ function log(...args){
 	args.forEach(arg => consoleDiv.innerHTML+= arg+"\n")
 }
 
-document.getElementById("startBtn").addEventListener("click", () => {
+startBtn.addEventListener("click", () => {
     // ipc.send("create-overlay-window", null)
-	ipc.send("open-overlay",null)
+	window.electronAPI.openOverlay();
     document.getElementById("stopOverlayBtn").disabled=false;
 })
 
-// document.getElementById("stopOverlayBtn").addEventListener("click", () => {
-//     ipc.send("stop-overlay",null)
-// })
 
-ipc.on('overlay-stopped', (event,args) => {
-    document.getElementById("stopOverlayBtn").disabled=true;
-})
 
-document.getElementById("loadReplayBtn").addEventListener("click", () => {
+loadReplayBtn.addEventListener("click", () => {
 
-	ipc.invoke('load-replay-dialog').then(result => {
+	window.electronAPI.loadReplay().then(result => {
 		console.log(result)
-        log("Replay loaded from "+ result)
-      })
-
+		log("Replay loaded from "+ result)
+	});
 	document.getElementById('connectToClientBtn').disabled = false;
 })
 
-document.getElementById('connectToClientBtn').addEventListener('click', () => {
-	ipc.invoke("connect-to-client").then(res => {
+connectToClientBtn.addEventListener('click', () => {
+
+	window.electronAPI.connectToClient().then(_ => {
 		log("Connected to client.")
-	})
+	});
 
 	document.getElementById('connectToClientBtn').disabled = true;
 })
 
-// document.getElementById('startWebServer').addEventListener('click', () => {
-// 	ipc.invoke('start-web-server').then(result => {
-// 		console.log(result);
-// 		log("Web Server started at http://localhost:8000")
-// 		document.getElementById('startWebServer').disabled = true;
-// 		document.getElementById('stopWebServer').disabled = false;
-// 	})
-// })
-
-// document.getElementById('stopWebServer').addEventListener('click', ()=>{
-// 	ipc.invoke('stop-web-server').then(result => {
-// 		log("Web Server stopped.")
-// 		document.getElementById('startWebServer').disabled = false;
-// 		document.getElementById('stopWebServer').disabled = true;
-// 	})
-// })
-
 updateImages.addEventListener('click', () => {
-	ipc.invoke('update-images').then(result => {
+	window.electronAPI.updateImages().then(result => {
 		log("Images updated.")
-	})
+	});
 })
-
-// if (!fs.existsSync(logDir)){
-//   fs.mkdirSync(logDir, {recursive:true});
-// }
 
 var blueColorInput = document.getElementById("blue_selected_color");
 var redColorInput = document.getElementById("red_selected_color");
@@ -119,41 +87,26 @@ phaseTextColorInput.addEventListener("change", (ev) =>{
 var enableCustomNamesInput = document.getElementById("enable_custom_names")
 var enableTransparent = document.getElementById('enable_transparent')
 
+var blueSummonerNames = document.getElementById("blueSummonerNames").children
+var redSummonerNames = document.getElementById("redSummonerNames").children
 var swapNamesButton = document.getElementById("swap")
 swapNamesButton.addEventListener("click", function (){
-	var tmp = summonerNameInput1.value
-	summonerNameInput1.setAttribute("value",summonerNameInput6.value)
-	summonerNameInput6.setAttribute("value",tmp)
-	tmp = summonerNameInput2.value
-	summonerNameInput2.setAttribute("value",summonerNameInput7.value)
-	summonerNameInput7.setAttribute("value",tmp)
-	tmp = summonerNameInput3.value
-	summonerNameInput3.setAttribute("value",summonerNameInput8.value)
-	summonerNameInput8.setAttribute("value",tmp)
-	tmp = summonerNameInput4.value
-	summonerNameInput4.setAttribute("value",summonerNameInput9.value)
-	summonerNameInput9.setAttribute("value",tmp)
-	tmp = summonerNameInput5.value
-	summonerNameInput5.setAttribute("value",summonerNameInput10.value)
-	summonerNameInput10.setAttribute("value",tmp)
+
+	for(var i=0;i<blueSummonerNames.length;i++){
+		var tmp = blueSummonerNames[i].value;
+		blueSummonerNames[i].value = redSummonerNames[i].value;
+		redSummonerNames[i].value = tmp;
+	}
 })
 
-var summonerNameInput1 = document.getElementById("summonerName1")
-var summonerNameInput2 = document.getElementById("summonerName2")
-var summonerNameInput3 = document.getElementById("summonerName3")
-var summonerNameInput4 = document.getElementById("summonerName4")
-var summonerNameInput5 = document.getElementById("summonerName5")
-var summonerNameInput6 = document.getElementById("summonerName6")
-var summonerNameInput7 = document.getElementById("summonerName7")
-var summonerNameInput8 = document.getElementById("summonerName8")
-var summonerNameInput9 = document.getElementById("summonerName9")
-var summonerNameInput10 = document.getElementById("summonerName10")
+window.electronAPI.getConfig().then((newConfig) => {
+	config = newConfig;
+	applyConfig(config);
+});
 
 
-ipc.on("newConfig", (event,newConfig) =>{
-  console.log("newConfig", newConfig)
-  config = newConfig;
-  blueColorInput.setAttribute("value", config.blueColor)
+function applyConfig(config){
+	blueColorInput.setAttribute("value", config.blueColor)
 	redColorInput.setAttribute("value", config.redColor)
 	timerTextColorInput.setAttribute("value", config.timerColor)
 	blueTextColorInput.setAttribute("value", config.blueTextColor)
@@ -169,17 +122,13 @@ ipc.on("newConfig", (event,newConfig) =>{
 	enableCustomNamesInput.setAttribute("checked", config.enableCustomNames)
 	enableTransparent.setAttribute("checked", config.enableTransparent)
 
-
 	blueColorHex.innerHTML= "("+config.blueColor+")"
 	redColorHex.innerHTML= "("+config.redColor+")"
 	timerColorHex.innerHTML= "("+config.timerColor+")"
 	blueTextColorHex.innerHTML= "("+config.blueTextColor+")"
 	redTextColorHex.innerHTML= "("+config.redTextColor+")"
 	phaseTextColorHex.innerHTML= "("+config.phaseTextColor+")"
-});
-
-
-ipc.send("getConfig")
+}
 
 
 var updateButton = document.getElementById("update")
@@ -187,7 +136,8 @@ updateButton.addEventListener("click",function (){
 	var blueColorInput = document.getElementById("blue_selected_color");
 	var redColorInput = document.getElementById("red_selected_color");
 	var timerTextColorInput = document.getElementById("timer_text_selected_color");
-  ipc.send("newConfig", {
+	var names = [...blueSummonerNames].concat([...redSummonerNames]).map((el) => el.value)
+	window.electronAPI.sendNewConfig({
 		blueColor: blueColorInput.value,
 		redColor: redColorInput.value,
 		timerColor: timerTextColorInput.value,
@@ -195,39 +145,27 @@ updateButton.addEventListener("click",function (){
 		redTextColor: redTextColorInput.value,
 		phaseTextColor: phaseTextColorInput.value,
 		enableCustomNames: enableCustomNamesInput.checked,
-		names:[
-			summonerNameInput1.value,
-			summonerNameInput2.value,
-			summonerNameInput3.value,
-			summonerNameInput4.value,
-			summonerNameInput5.value,
-			summonerNameInput6.value,
-			summonerNameInput7.value,
-			summonerNameInput8.value,
-			summonerNameInput9.value,
-			summonerNameInput10.value,
-		],
+		names: names,
 		blueTeamName: blueTeamName.value,
 		blueTeamSubtext: blueTeamSubtext.value,
 		redTeamName: redTeamName.value,
 		redTeamSubText: redTeamSubtext.value,
 		pickingText: pickingText.value,
 		enableTransparent: enableTransparent.checked
-	})
-})
-
+	});
+});
 
 var statusWebServer = document.getElementById("statusWebServer")
 var statusWebSocketServer = document.getElementById("statusWebSocketServer")
 var statusClient = document.getElementById("statusClient")
 
-
-ipc.on("serverStatus", (event,status) =>{
+window.electronAPI.onNewServerStatus((event,status) =>{
 	  statusWebServer.innerHTML = "Web Server: "+ status.webServer
-  	  statusWebSocketServer.innerHTML = "Web Socket Server: "+ status.webSocketServer
+  	  statusWebSocketServer.innerHTML = "WebSocket Server: "+ status.webSocketServer
  	  statusClient.innerHTML = "Client: "+status.leagueClient
 
 	statusWebServer.style.backgroundColor = status.webServer =="Running" ? "var(--online-color)" : "var(--offline-color)"
 	statusWebSocketServer.style.backgroundColor = status.webSocketServer =="Running" ? "var(--online-color)" : "var(--offline-color)"
 	statusClient.style.backgroundColor = status.leagueClient == "Connected" ? "var(--online-color)" : "var(--offline-color)"
 })
+
