@@ -129,7 +129,7 @@ function loadConfig(){
 }
 
 function startWebsocketServer(){
-    webSocketServer = new MyWebSocketServer( config.websocketServerPort , 'localhost');
+    webSocketServer = new MyWebSocketServer( config.websocketServerPort , '0.0.0.0');
 
     webSocketServer.start();
 }
