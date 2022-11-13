@@ -41,7 +41,7 @@ pipeline {
         stage('Release'){
             when { tag "v*" }
             steps{
-                withCredentials([string(credentialsId: 'ghp', variable: 'token')]) {
+                withCredentials([string(credentialsId: 'github_release_token', variable: 'token')]) {
                 sh '''
                     echo "Publishing on Github..."
                     # Get the last tag name
