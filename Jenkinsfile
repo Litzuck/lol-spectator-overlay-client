@@ -15,13 +15,13 @@ pipeline {
             args '-p 3000:3000' 
         }
     }
-    stages {
-        stage("Git checkout"){
-            steps{
-                git branch: 'main', url: 'https://github.com/Litzuck/lol-spectator-overlay-client.git'
-                setBuildStatus("Building ...", "PENDING");
-            }
-        }
+    // stages {
+    //     stage("Git checkout"){
+    //         steps{
+    //             git branch: 'main', url: 'https://github.com/Litzuck/lol-spectator-overlay-client.git'
+    //             setBuildStatus("Building ...", "PENDING");
+    //         }
+    //     }
         stage('Build Frontend'){
             steps{
                 sh 'cd overlay-react && npm ci && npm run build'
