@@ -15,7 +15,7 @@ pipeline {
             args '-p 3000:3000' 
         }
     }
-    // stages {
+    stages {
     //     stage("Git checkout"){
     //         steps{
     //             git branch: 'main', url: 'https://github.com/Litzuck/lol-spectator-overlay-client.git'
