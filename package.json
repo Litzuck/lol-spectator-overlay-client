@@ -34,7 +34,7 @@
     "express-serve-asar": "^1.0.2",
     "fastq": "^1.13.0",
     "json8-merge-patch": "^1.0.4",
-    "lol-esports-spectate": "^3.0.0",
+    "lol-esports-spectate": "^3.0.1",
     "request-promise": "^4.2.6",
     "requestretry": "^7.1.0",
     "ws": "^7.5.5"
