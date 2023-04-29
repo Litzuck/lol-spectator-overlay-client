@@ -12,7 +12,7 @@ function App() {
     let query = useQuery()
     return (
       <div className="App">  
-          <Overlay backend={query.has('backend') ? query.get('backend'): 'ws://localhost:36502'}></Overlay>
+          <Overlay backend={query.has('backend') ? query.get('backend'): `ws://${window.location.hostname}:36502`}></Overlay>
     </div>
     )
   }catch(e){
