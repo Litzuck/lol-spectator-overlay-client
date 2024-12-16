@@ -128,6 +128,11 @@ function applyConfig(config){
 	blueTextColorHex.innerHTML= "("+config.blueTextColor+")"
 	redTextColorHex.innerHTML= "("+config.redTextColor+")"
 	phaseTextColorHex.innerHTML= "("+config.phaseTextColor+")"
+
+	for(var i=0;i<blueSummonerNames.length;i++){
+		blueSummonerNames[i].value = config.names[i]
+		redSummonerNames[i].value = config.names[i+5]
+	}
 }
 
 
