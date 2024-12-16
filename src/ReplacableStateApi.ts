@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
-import { ChampSelectStateApi} from 'lol-esports-spectate'
-import { State } from 'lol-esports-spectate/dist/Interfaces';
+import { ChampSelectStateApi} from './ChampSelectStateApi'
+import { State } from './Interfaces';
 
 
 export default class ReplacableStateApi extends EventEmitter{

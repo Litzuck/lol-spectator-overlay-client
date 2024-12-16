@@ -1,4 +1,4 @@
-import { State } from 'lol-esports-spectate/dist/Interfaces';
+import { State } from './Interfaces';
 import WebSocket from 'ws';
 import ReplacableStateApi from './ReplacableStateApi';
 
