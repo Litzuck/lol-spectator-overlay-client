@@ -1,10 +1,10 @@
 <!doctype html>
-<html>
+<html data-bs-theme="dark">
 
 <head>
 	<title>Config Window</title>
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="./config.css" />
 </head>
 
@@ -102,21 +102,25 @@
 
 				<button class=" btn btn-primary"type="button" id="swap">Swap Names</button>
 				<div class="container-grid">
-					<div class="container-col" id="blueSummonerNames">
+					<div class="container-col">
 						<h4>Blue Side</h4>
-						<input id="summonerName1" value="Summoner 1">
-						<input id="summonerName2" value="Summoner 2">
-						<input id="summonerName3" value="Summoner 3">
-						<input id="summonerName4" value="Summoner 4">
-						<input id="summonerName5" value="Summoner 5">
+						<div id="blueSummonerNames">
+							<input id="summonerName1" value="Summoner 1">
+							<input id="summonerName2" value="Summoner 2">
+							<input id="summonerName3" value="Summoner 3">
+							<input id="summonerName4" value="Summoner 4">
+							<input id="summonerName5" value="Summoner 5">
+						</div>
 					</div>
-					<div class="container-col" id="redSummonerNames">
+					<div class="container-col" >
 						<h4>Red side</h4>
+						<div id="redSummonerNames">
 						<input id="summonerName1" value="Summoner 6">
 						<input id="summonerName2" value="Summoner 7">
 						<input id="summonerName3" value="Summoner 8">
 						<input id="summonerName4" value="Summoner 9">
 						<input id="summonerName5" value="Summoner 10">
+					</div>
 					</div>
 				</div>
 
@@ -124,15 +128,15 @@
 
 		</div>
 		<div class="col">
-			<div id="statusClient" class="status">
+			<div id="statusClient" class="status text-dark">
 				Client: Connected
 			</div>
 		
-			<div id="statusWebServer" class="status">
+			<div id="statusWebServer" class="status text-dark">
 				Web Server: Starting
 			</div>
 
-			<div id="statusWebSocketServer" class="status">
+			<div id="statusWebSocketServer" class="status text-dark">
 				WebSocket Server: Starting
 			</div>
 		</div>
