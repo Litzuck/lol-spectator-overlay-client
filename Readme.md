@@ -1,6 +1,10 @@
+# IMPORTANT NOTICE
+This tool will probably receive no further updates, if you have any issues and need a tool like this, look at the other alternatives available for this.
+
 # Lol Spectator Overlay
 
 This is a tool that produces a custom League of Legends Champion Select Overlay that is inspired by the one used in the LEC and LCS between 2015-2017.
+
 
 ## Usage
 
