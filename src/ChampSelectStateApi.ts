@@ -79,8 +79,8 @@ export class ChampSelectStateApi extends TypedEmitter<ChampSelectStateApiEvents>
 
                             this.leagueApi.request("lol-summoner/v1/summoners/"+member.summonerId, (data: string) => {
                                 let summoner = JSON.parse(data)
-                                this.summonerNameMap.set(member.summonerId, summoner.displayName)
-                                console.log("Got summoner name "+ summoner.displayName+" for summonerId: "+member.summonerId)
+                                this.summonerNameMap.set(member.summonerId, summoner.gameName)
+                                console.log("Got summoner name "+ summoner.gameName+" for summonerId: "+member.summonerId)
                             }, () => { _err => console.error("Error getting summoner name for summonerId: "+member.summonerId) }
                         );
                         }
