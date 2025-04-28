@@ -8,7 +8,8 @@
       "esModuleInterop": true,
       "paths": {
         "*": ["node_modules/*"]
-      }
+      },
+      "lib": ["ES2019", "DOM"]
     },
     "include": [
       "src/**/*"
